@@ -1,12 +1,12 @@
-/* === Dodo Museum — Flat 2D Neon Skin (pixel-safe) ===
-   Goal: readable text over busy HK neon background.
-   - Flat blocks (no heavy gradients)
-   - Translucent "glass" cards with blur + solid fallback
-   - High-contrast palette tuned to magenta/cyan neon
-   - Pixel fonts preserved
+/* === Dodo Museum — Neon Flat v2 (pixel-safe, super readable) ===
+   • Strong visual hierarchy (hero pops, cards quiet)
+   • Square UI, thin borders, minimal shadows
+   • Central scrim behind content for readability over busy bg
+   • Monochrome platform icons with neon hover
+   • Press Start 2P for headings/nav, VT323 for body
 */
 
-/* Fonts */
+/* FONTS */
 @font-face{
   font-family: 'Press Start 2P';
   font-style: normal;
@@ -22,67 +22,85 @@
   font-display: swap;
 }
 
-/* Palette (tuned to your image) */
+/* PALETTE tuned to your HK neon */
 :root{
-  --bg: #0A0C1D;                /* deep night */
+  --bg: #090B1B;                /* deep night */
   --fg: #EAF2FF;                /* main text */
-  --muted: #C5D4FF;             /* body/subtext */
-  --accent: #61DFFF;            /* cyan neon */
-  --accent-2: #FF77E1;          /* magenta neon */
-  --border: #2E3180;            /* cool indigo line */
-  --card: rgba(12,14,40,0.74);  /* translucent card */
-  --card-strong: rgba(12,14,40,0.88);
-  --shadow: rgba(0,0,0,0.35);
+  --muted: #C8D6FF;             /* secondary text */
+  --ink: #0F1333;               /* UI ink block */
+  --line: #2E3180;              /* 1px border */
+  --accent: #63E4FF;            /* cyan neon */
+  --accent-2: #FF6EDC;          /* magenta neon */
+  --glow: rgba(99,228,255,0.35);/* cyan glow */
+  --glow-2: rgba(255,110,220,0.3);
+  --scrim: rgba(9,11,27,0.55);  /* central scrim fill */
+  --scrim-strong: rgba(9,11,27,0.7);
+
+  /* Monochrome icon tint (used via CSS filter) */
+  --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
+  --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
 }
 
-/* Root background: scrim + photo (keeps text readable) */
+/* BACKGROUND: image + global dark veil for contrast */
 html, body{
-  margin: 0; padding: 0;
+  margin:0; padding:0;
   background:
-    linear-gradient(rgba(8,6,24,0.65), rgba(8,6,24,0.65)),
+    linear-gradient(rgba(8,6,24,0.55), rgba(8,6,24,0.55)),
     url('../assets/img/bg-hk.png') no-repeat center top;
   background-size: cover;
   image-rendering: pixelated;
   color: var(--fg);
   font-family: 'VT323', monospace;
   line-height: 1.5;
-  letter-spacing: 0.3px;
+  letter-spacing: .3px;
 }
 
-/* Very faint scanlines for Y2K vibe (subtle) */
+/* Subtle scanlines for Y2K texture */
 body:before{
   content:"";
   position: fixed; inset:0;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.02), rgba(255,255,255,0.02) 1px,
-    rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px
+    rgba(255,255,255,.02), rgba(255,255,255,.02) 1px,
+    rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 3px
   );
   pointer-events:none;
   mix-blend-mode: overlay;
 }
 
-/* Basics */
-a{ color: var(--accent); text-decoration: none }
-a:hover{ text-decoration: underline }
-
+/* LAYOUT WRAPPER + CENTRAL SCRIM (readability layer) */
 .wrapper{
   max-width: 980px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 20px 18px 28px;
   position: relative;
-  z-index: 1; /* on top of scanlines */
+  z-index: 1;
 }
-
-/* Header / Brand */
-.header{
-  display:flex; align-items:center; gap:14px;
-  padding: 12px 0 6px;
-  background: var(--card-strong);
-  border: 1px solid var(--border);
+.wrapper::before{
+  /* a subtle column behind content to separate from background */
+  content:"";
+  position:absolute; inset:0;
+  margin: 58px 6px 18px;        /* leaves logo/nav perched above */
+  background: var(--scrim);
+  border: 1px solid var(--line);
   border-radius: 6px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+.wrapper > *{ position: relative; z-index: 1; }
+
+/* LINKS */
+a{ color: var(--accent); text-decoration: none }
+a:hover{ color: var(--accent-2); text-decoration: none }
+
+/* HEADER / BRAND — square, simple */
+.header{
+  display:flex; align-items:center; gap:12px;
+  padding: 10px 12px;
+  background: var(--scrim-strong);
+  border: 1px solid var(--line);
+  border-radius: 6px;
 }
 .header img.logo{
   width: 40px; height: 40px; image-rendering: pixelated;
@@ -93,133 +111,180 @@ a:hover{ text-decoration: underline }
   text-transform: lowercase;
   letter-spacing: 1.5px;
   color: var(--fg);
-  text-shadow: 0 1px 0 #000;
+  text-shadow: 0 0 6px var(--glow);
 }
 
-/* Nav — flat, square, readable */
+/* NAV — compact pills, clear active state */
 .nav{
-  margin-top: 12px;
+  margin-top: 10px;
   display:flex; gap: 10px; flex-wrap: wrap;
 }
 .nav a{
   font-family: 'Press Start 2P';
   font-size: 12px;
   padding: 10px 12px;
-  background: var(--card);
+  background: var(--ink);
   color: var(--fg);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35) inset;
 }
-.nav a.active, .nav a:hover{
+.nav a.active{
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
+.nav a:hover{
+  outline: 2px solid var(--accent-2);
+  outline-offset: -2px;
+}
 
-/* Hero */
+/* HERO — poster-like headline, neon kiss */
 .hero{
-  margin: 16px 0 20px;
-  background: var(--card-strong);
-  border: 1px solid var(--border);
+  margin: 16px 0 18px;
+  background: linear-gradient(0deg, var(--scrim-strong), var(--scrim-strong));
+  border: 1px solid var(--line);
   border-radius: 6px;
-  padding: 16px;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 10px 24px var(--shadow);
+  padding: 18px 16px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
 }
 .hero h1{
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   font-family: 'Press Start 2P';
-  font-size: 18px;
-  letter-spacing: 1.5px;
-  text-shadow: 0 1px 0 #000;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  color: var(--fg);
+  text-shadow:
+    0 0 6px var(--glow),
+    0 0 20px var(--glow-2);
 }
 .hero p{
-  margin:0; color: var(--muted); font-size: 20px
+  margin:0;
+  color: var(--muted);
+  font-size: 20px;
 }
 
-/* Generic card — flat translucent block */
+/* CARD — flat, square, low-shadow, crisp border */
 .card{
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--ink);
+  border: 1px solid var(--line);
   border-radius: 6px;
   padding: 16px;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 18px var(--shadow);
+  box-shadow: 0 6px 16px rgba(0,0,0,.28);
 }
 
-/* Grids */
+/* GRID HELPERS */
 .grid{ display:grid; gap: 14px }
 .grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)) }
 .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)) }
-@media (max-width: 880px){ .grid-2, .grid-3{ grid-template-columns: 1fr } }
+@media (max-width: 880px){
+  .grid-2, .grid-3{ grid-template-columns: 1fr }
+}
 
-/* About gallery */
+/* GALLERY */
 .gallery img{
   width:100%; display:block;
   border-radius: 4px;
-  border:1px solid var(--border);
-  box-shadow: 0 6px 16px var(--shadow);
+  border:1px solid var(--line);
 }
 
-/* Links page icon grid — flat buttons */
+/* ICON BUTTONS (Links page) — monochrome, neon hover */
 .icon-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 14px;
 }
-@media (max-width: 640px){
-  .icon-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
-}
+@media (max-width: 640px){ .icon-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) } }
+
 .icon-btn{
   display:flex; align-items:center; justify-content:center; gap:10px;
   padding:14px;
-  background: var(--card);
-  border:1px solid var(--border);
+  background: var(--ink);
+  border:1px solid var(--line);
   border-radius:6px;
   font-family:'Press Start 2P';
   font-size:12px;
+  transition: transform .08s ease, box-shadow .12s ease, outline .08s ease;
+}
+.icon-btn img, .icon-btn svg{
+  width:22px; height:22px; image-rendering: pixelated;
+  filter: var(--icon-filter);          /* cyan tint */
+  opacity: .95;
 }
 .icon-btn:hover{
   outline: 2px solid var(--accent-2);
   outline-offset: -2px;
+  box-shadow: 0 0 22px var(--glow-2);
+  transform: translateY(-1px);
 }
-.icon-btn img, .icon-btn svg{ width:22px; height:22px; image-rendering: pixelated }
+.icon-btn:hover img, .icon-btn:hover svg{
+  filter: var(--icon-filter-hover);    /* magenta tint on hover */
+}
 
-/* Songs list — tighter, square art */
+/* SONG BLOCKS — square art, tight rhythm */
 .song{
   display:grid; grid-template-columns: 120px 1fr; gap:14px; align-items:start;
 }
 .song img.art{
   width:120px; height:120px; object-fit:cover;
-  border-radius: 4px; border:1px solid var(--border);
+  border-radius: 4px; border:1px solid var(--line);
   image-rendering: pixelated;
 }
 .song h3{
-  margin:0 0 6px 0; font-family:'Press Start 2P'; font-size:14px; letter-spacing:1px; text-shadow: 0 1px 0 #000;
+  margin:0 0 6px 0;
+  font-family:'Press Start 2P';
+  font-size:14px; letter-spacing:1px;
+  color: var(--fg);
+  text-shadow: 0 0 6px rgba(0,0,0,.55);
 }
-.song p{ margin:0 0 8px 0; color: var(--muted); font-size: 20px }
-.song .listen{ display:flex; gap:8px; flex-wrap: wrap }
+.song p{
+  margin:0 0 8px 0; color: var(--muted); font-size: 20px;
+}
+.song .listen{
+  display:flex; gap:8px; flex-wrap: wrap;
+}
 .listen a{
   padding:6px 8px;
-  border:1px solid var(--border);
+  border:1px solid var(--line);
   border-radius:6px;
   font-family:'Press Start 2P';
   font-size:10px;
-  background: rgba(18,20,50,0.9);
+  background: #121536;
+}
+.listen a:hover{
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
-/* Audio element — compact & readable */
+/* AUDIO — compact with neon accent */
 audio{
   width:100%;
-  filter: drop-shadow(0 2px 6px var(--shadow));
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
   accent-color: var(--accent);
 }
 
-/* Footer */
+/* TYPE UTILITIES */
+h1,h2,h3{ line-height: 1.25 }
+small,.muted{ color: var(--muted) }
+
+/* FOOTER */
 .footer{
-  text-align:center; color: var(--muted); padding: 20px 0; font-size: 18px
+  text-align:center; color: var(--muted);
+  padding: 18px 0; font-size: 18px
 }
 
-/* Small text helpers */
-small, .muted{ color: var(--muted) }
+/* MOBILE POLISH */
+@media (max-width: 560px){
+  .brand{ font-size: 16px }
+  .hero h1{ font-size: 18px }
+  .hero p{ font-size: 18px }
+  .song{ grid-template-columns: 96px 1fr }
+  .song img.art{ width:96px; height:96px }
+  .wrapper::before{ margin: 54px 4px 14px }
+}
+
+/* HIGH-CONTRAST MODE SUPPORT */
+@media (prefers-contrast: more){
+  .wrapper::before{ background: rgba(9,11,27,0.75) }
+  .card, .hero{ box-shadow: none }
+  .nav a.active, .nav a:hover, .listen a:hover, .icon-btn:hover{ outline-width: 3px }
+}
