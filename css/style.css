@@ -35,15 +35,17 @@
 *{ box-sizing: border-box }
 
 html, body {
-  margin: 0; padding: 0;
-  background: url('../assets/img/bg-dodo.png') repeat;
-  background-size: auto;   /* keeps pixel scale */
-  image-rendering: pixelated;
+  margin: 0; 
+  padding: 0;
+  background: url('../assets/img/bg-hk.png') no-repeat center top;
+  background-size: cover;   /* scales to fill screen */
+  image-rendering: pixelated; /* keeps crisp pixel edges */
   color: var(--fg);
   font-family: 'VT323', monospace;
   line-height: 1.5;
   letter-spacing: 0.3px;
 }
+
 
 /* Faint CRT scanlines */
 body:before{
