@@ -34,11 +34,11 @@
 
 *{ box-sizing: border-box }
 
-html,body{
-  margin:0; padding:0;
-  background: radial-gradient(1200px 800px at 10% -10%, #1e1944, transparent 60%),
-              radial-gradient(1000px 600px at 90% 10%, #0e2444, transparent 60%),
-              var(--bg);
+html, body {
+  margin: 0; padding: 0;
+  background: url('../assets/img/bg-dodo.png') repeat;
+  background-size: auto;   /* keeps pixel scale */
+  image-rendering: pixelated;
   color: var(--fg);
   font-family: 'VT323', monospace;
   line-height: 1.5;
