@@ -1,241 +1,55 @@
-/* === Dodo Museum — Neon Flat v3.1 (square Y2K, punchy) === */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dodo Museum — Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dodo Museum — dreampop / shoegaze. Listen and follow.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <img src="assets/img/logo.png" alt="Dodo Museum logo" class="logo">
+      <div class="brand">dodo museum</div>
+    </header>
 
-/* FONTS */
-@font-face{
-  font-family: 'Press Start 2P';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
-  font-display: swap;
-}
-@font-face{
-  font-family: 'VT323';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJA.woff2') format('woff2');
-  font-display: swap;
-}
+    <nav class="nav">
+      <a href="index.html">links</a>
+      <a href="songs.html">songs</a>
+      <a href="about.html">about</a>
+    </nav>
 
-/* PALETTE */
-:root{
-  --fg: #EAF2FF;
-  --muted: #C8D6FF;
-  --ink: #0B0F2A;
-  --line: #2E3180;
-  --accent: #63E4FF;
-  --accent-2: #FF6EDC;
-  --glow: rgba(99,228,255,.55);
-  --glow-2: rgba(255,110,220,.45);
+    <section class="hero card">
+      <h1>listen & follow</h1>
+      <p>Dreampop & shoegaze, pixel-soft and floaty. Tap a platform below.</p>
+    </section>
 
-  --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
-  --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
-}
+    <section class="grid icon-grid">
+      <a class="icon-btn" href="https://open.spotify.com/artist/your-id">
+        <img src="assets/icons/spotify.svg" alt=""> 
+      </a>
+      <a class="icon-btn" href="https://music.apple.com/artist/your-id">
+        <img src="assets/icons/apple-music.svg" alt="">
+      </a>
+      <a class="icon-btn" href="https://www.youtube.com/@yourchannel">
+        <img src="assets/icons/youtube.svg" alt=""> 
+      </a>
+      <a class="icon-btn" href="https://instagram.com/yourhandle">
+        <img src="assets/icons/instagram.svg" alt=""> 
+      </a>
+      <a class="icon-btn" href="https://www.tiktok.com/@yourhandle">
+        <img src="assets/icons/tiktok.svg" alt=""> 
+      </a>
+      <a class="icon-btn" href="https://dodomuseum.bandcamp.com/">
+        <img src="assets/icons/bandcamp.svg" alt=""> 
+      </a>
+    </section>
 
-/* BACKGROUND: raw image */
-html, body{
-  margin:0; padding:0;
-  background: url('../assets/img/bg-hk.png') no-repeat center top;
-  background-size: cover;
-  image-rendering: pixelated;
-  color: var(--fg);
-  font-family: 'VT323', monospace;
-  line-height: 1.5;
-  letter-spacing: .3px;
-}
-
-/* Subtle scanlines */
-body::before{
-  content:""; position: fixed; inset:0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.02), rgba(255,255,255,.02) 1px,
-    rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 3px
-  );
-  pointer-events:none; mix-blend-mode: overlay;
-}
-
-/* WRAPPER + faint frame */
-.wrapper{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 20px 18px 28px;
-  position: relative; z-index: 1;
-}
-.wrapper::before{
-  content:""; position:absolute; inset:0;
-  margin: 112px 6px 20px;     /* EXTRA SPACE BELOW NAV */
-  border: 1px solid rgba(46,49,128,.55);
-  border-radius: 3px; background: transparent; z-index: 0;
-}
-.wrapper > *{ position: relative; z-index: 1; }
-
-/* global link */
-a{ color: var(--accent); text-decoration: none; }
-a:hover{ color: var(--accent-2); }
-
-/* HEADER + NAV (centered) */
-.header{
-  margin: 8px 0 0;
-  padding: 14px 14px 10px;
-  background: rgba(11,15,42,.85);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  box-shadow: 0 0 18px rgba(0,0,0,.45), 0 0 16px var(--glow);
-  display:flex; align-items:center; justify-content:center; gap:12px; text-align:center;
-}
-.header .logo{
-  width: 60px; height: 60px; image-rendering: pixelated;
-  filter: drop-shadow(0 0 8px var(--glow));
-}
-.brand{
-  margin:0; font-family:'Press Start 2P', cursive;
-  font-size: 24px; letter-spacing: 1.8px; text-transform: lowercase;
-  color: var(--fg);
-  text-shadow: 0 0 10px var(--glow), 0 0 18px var(--glow-2);
-}
-
-.nav{
-  margin-top: 12px; margin-bottom: 32px;   /* SPACE BELOW NAV ON ALL PAGES */
-  display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
-}
-.nav a{
-  display:inline-block; font-family:'Press Start 2P'; font-size:12px;
-  padding:10px 14px; background:#0e1440; color:var(--fg);
-  border:1px solid var(--line); border-radius:4px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.5) inset, 0 0 10px rgba(0,0,0,.25);
-  transition: transform .08s ease, outline .08s ease, box-shadow .12s ease;
-}
-.nav a:hover{
-  outline:2px solid var(--accent-2); outline-offset:-2px;
-  box-shadow: 0 0 20px var(--glow-2); transform: translateY(-1px);
-}
-.nav a.active{
-  outline:2px solid var(--accent); outline-offset:-2px;
-  box-shadow: 0 0 18px var(--glow);
-}
-
-/* HERO — keep or remove as you prefer */
-.hero{ display:none !important; }  /* hide since you don't want the strip */
-
-/* CARD — square + pop */
-.card{
-  background: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  padding: 16px;
-  box-shadow: 0 2px 0 rgba(0,0,0,.6) inset, 0 0 22px rgba(0,0,0,.35);
-  position: relative;
-}
-.card::before{
-  content:""; position:absolute; inset:-2px; border-radius:2px; pointer-events:none;
-  box-shadow: 0 0 10px var(--glow), 0 0 14px var(--glow-2); opacity:.55;
-}
-
-/* GRIDS */
-.grid{ display:grid; gap: 16px; }
-.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-@media (max-width: 880px){ .grid-2, .grid-3{ grid-template-columns: 1fr; } }
-
-/* GALLERY */
-.gallery img{
-  width:100%; display:block; border-radius:2px; border:1px solid var(--line);
-}
-
-/* ==== ICON-ONLY LINK GRID (BIGGER + CENTERED) ==== */
-.icon-grid{
-  display:grid;
-  grid-template-columns: repeat(6,72px);
-  gap:16px;
-  justify-content:center;
-}
-@media (max-width: 900px){ .icon-grid{ grid-template-columns: repeat(5,72px); } }
-@media (max-width: 740px){ .icon-grid{ grid-template-columns: repeat(4,72px); } }
-@media (max-width: 560px){ .icon-grid{ grid-template-columns: repeat(3,72px); } }
-
-.icon-btn{
-  width:72px; height:72px; padding:0;
-  display:flex; align-items:center; justify-content:center;
-  background:#0e1440;
-  border:1px solid var(--line);
-  border-radius:4px;
-  font-size:0; line-height:0;          /* hides any stray text baseline */
-}
-.icon-btn img, .icon-btn svg{
-  width:44px; height:44px; display:block;
-  image-rendering: pixelated;
-  filter: var(--icon-filter);
-}
-.icon-btn:hover{
-  outline:2px solid var(--accent-2); outline-offset:-2px;
-  box-shadow: 0 0 22px var(--glow-2);
-}
-.icon-btn:hover img, .icon-btn:hover svg{ filter: var(--icon-filter-hover); }
-
-/* SONG BLOCKS (songs.html) */
-.song{
-  display:grid; grid-template-columns: 120px 1fr; gap:16px; align-items:start;
-}
-.song img.art{
-  width:120px; height:120px; object-fit:cover;
-  border-radius: 2px; border:1px solid var(--line);
-  image-rendering: pixelated; box-shadow: 0 0 14px rgba(0,0,0,.35);
-}
-.song h3{
-  margin:0 0 6px 0; font-family:'Press Start 2P';
-  font-size:14px; letter-spacing:1px; color: var(--fg);
-  text-shadow: 0 0 6px rgba(0,0,0,.6);
-}
-.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px; }
-.song .listen{ display:flex; gap:8px; flex-wrap: wrap; }
-.listen a{
-  padding:6px 8px; border:1px solid var(--line); border-radius:4px;
-  font-family:'Press Start 2P'; font-size:10px; background:#121536;
-}
-.listen a:hover{ outline:2px solid var(--accent); outline-offset:-2px; }
-
-/* OPTIONAL Featured song (index.html) */
-.featured-song{
-  display:grid; grid-template-columns: 160px 1fr; gap:16px; align-items:start;
-}
-.featured-song .thumb{
-  width:160px; height:160px; object-fit:cover; border-radius:2px;
-  border:1px solid var(--line); image-rendering: pixelated; box-shadow: 0 0 14px rgba(0,0,0,.35);
-}
-.featured-song h3{ margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px; }
-.featured-song .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-.featured-song .cta a{
-  padding:8px 10px; border:1px solid var(--line); border-radius:4px;
-  font-family:'Press Start 2P'; font-size:10px; background:#121536;
-}
-.featured-song .cta a:hover{ outline:2px solid var(--accent); outline-offset:-2px; }
-
-/* AUDIO */
-audio{
-  width:100%;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
-  accent-color: var(--accent);
-}
-
-/* TYPE */
-h1,h2,h3{ line-height: 1.25; }
-small,.muted{ color: var(--muted); }
-
-/* FOOTER */
-.footer{ text-align:center; color: var(--muted); padding: 18px 0; font-size: 18px; }
-
-/* MOBILE */
-@media (max-width: 560px){
-  .brand{ font-size: 18px; }
-  .header .logo{ width:46px; height:46px; }
-  .song{ grid-template-columns: 96px 1fr; }
-  .song img.art{ width:96px; height:96px; }
-  .wrapper::before{ margin: 108px 4px 16px; }
-}
-
-/* HIGH CONTRAST */
-@media (prefers-contrast: more){
-  .card::before{ opacity:.85; }
-  .card{ box-shadow:none; }
-  .nav a:hover, .nav a.active, .listen a:hover{ outline-width:3px; }
-}
+    <footer class="footer">© Dodo Museum</footer>
+  </div>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
