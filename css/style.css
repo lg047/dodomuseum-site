@@ -1,9 +1,9 @@
-/* === Dodo Museum — Neon Flat v2 (pixel-safe, super readable) ===
-   • Strong visual hierarchy (hero pops, cards quiet)
-   • Square UI, thin borders, minimal shadows
-   • Central scrim behind content for readability over busy bg
-   • Monochrome platform icons with neon hover
-   • Press Start 2P for headings/nav, VT323 for body
+/* === Dodo Museum — Neon Flat v3 (square Y2K, punchy) ===
+   - Raw HK background (no dim overlay)
+   - Hero removed
+   - Square cards with neon borders + glow
+   - Centered, symmetrical header/nav
+   - Press Start 2P for headings/nav, VT323 for body
 */
 
 /* FONTS */
@@ -22,30 +22,26 @@
   font-display: swap;
 }
 
-/* PALETTE tuned to your HK neon */
+/* PALETTE */
 :root{
-  --bg: #090B1B;                /* deep night */
-  --fg: #EAF2FF;                /* main text */
-  --muted: #C8D6FF;             /* secondary text */
-  --ink: #0F1333;               /* UI ink block */
-  --line: #2E3180;              /* 1px border */
-  --accent: #63E4FF;            /* cyan neon */
-  --accent-2: #FF6EDC;          /* magenta neon */
-  --glow: rgba(99,228,255,0.35);/* cyan glow */
-  --glow-2: rgba(255,110,220,0.3);
-  --scrim: rgba(9,11,27,0.55);  /* central scrim fill */
-  --scrim-strong: rgba(9,11,27,0.7);
+  --fg: #EAF2FF;
+  --muted: #C8D6FF;
+  --ink: #0B0F2A;             /* darker ink for stronger contrast */
+  --line: #2E3180;            /* base 1px line */
+  --accent: #63E4FF;          /* cyan */
+  --accent-2: #FF6EDC;        /* magenta */
+  --glow: rgba(99,228,255,.55);
+  --glow-2: rgba(255,110,220,.45);
 
-  /* Monochrome icon tint (used via CSS filter) */
+  /* Icon tint */
   --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
   --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
 }
 
-/* BACKGROUND: image + global dark veil for contrast */
+/* BACKGROUND: RAW IMAGE, NO OVERLAY */
 html, body{
   margin:0; padding:0;
-  background:
-    url('../assets/img/bg-hk.png') no-repeat center top;
+  background: url('../assets/img/bg-hk.png') no-repeat center top;
   background-size: cover;
   image-rendering: pixelated;
   color: var(--fg);
@@ -54,7 +50,7 @@ html, body{
   letter-spacing: .3px;
 }
 
-/* Subtle scanlines for Y2K texture */
+/* Subtle scanlines */
 body:before{
   content:"";
   position: fixed; inset:0;
@@ -67,7 +63,7 @@ body:before{
   mix-blend-mode: overlay;
 }
 
-/* LAYOUT WRAPPER + CENTRAL SCRIM (readability layer) */
+/* WRAPPER: light center scrim frame (thin) so layout reads, but not dull */
 .wrapper{
   max-width: 980px;
   margin: 0 auto;
@@ -76,15 +72,12 @@ body:before{
   z-index: 1;
 }
 .wrapper::before{
-  /* a subtle column behind content to separate from background */
   content:"";
   position:absolute; inset:0;
-  margin: 58px 6px 18px;        /* leaves logo/nav perched above */
-  background: var(--scrim);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  margin: 72px 6px 20px;   /* leaves header above */
+  border: 1px solid rgba(46,49,128,.55);
+  border-radius: 3px;
+  background: transparent;  /* no fill to avoid dullness */
   z-index: 0;
 }
 .wrapper > *{ position: relative; z-index: 1; }
@@ -93,132 +86,106 @@ body:before{
 a{ color: var(--accent); text-decoration: none }
 a:hover{ color: var(--accent-2); text-decoration: none }
 
-/* =========================================
-   HEADER & NAV — centered, symmetrical
-   Works with either:
-   - <header class="header"> + <nav class="nav"> (your current HTML)
-   - <header class="site-header"> + <nav class="main-nav"> (optional)
-   ========================================= */
-
+/* =========================
+   HEADER & NAV — centered
+   ========================= */
 .site-header,
 .header{
-  margin: 6px 0 12px;
-  padding: 14px 14px 10px;
-  background: var(--scrim-strong);
+  margin: 8px 0 12px;
+  padding: 14px 14px 12px;
+  background: rgba(11,15,42,.85);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(0,0,0,.45), 0 0 16px var(--glow);
 }
 
-/* Brand row centered */
 .site-header .brandbar,
 .header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  text-align: center;
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; text-align:center;
 }
 
-/* Bigger logo */
 .site-header .logo,
 .header .logo{
-  width: 56px;
-  height: 56px;
-  image-rendering: pixelated;
-  flex: 0 0 auto;
-  filter: drop-shadow(0 0 6px var(--glow));
+  width: 60px; height: 60px; image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px var(--glow));
 }
 
-/* Wordmark */
 .site-header .wordmark,
 .brand{
-  margin: 0;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 22px;
-  letter-spacing: 1.6px;
+  margin:0;
+  font-family:'Press Start 2P', cursive;
+  font-size: 24px;
+  letter-spacing: 1.8px;
   text-transform: lowercase;
   color: var(--fg);
-  text-shadow:
-    0 0 8px var(--glow),
-    0 0 18px var(--glow-2);
+  text-shadow: 0 0 10px var(--glow), 0 0 18px var(--glow-2);
 }
 
-/* Centered nav row */
 .main-nav,
 .nav{
   margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
 }
-
 .main-nav a,
 .nav a{
-  display: inline-block;
-  font-family: 'Press Start 2P';
-  font-size: 12px;
-  padding: 10px 14px;
-  background: var(--ink);
-  color: var(--fg);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.35) inset;
-  transition: transform .08s ease, box-shadow .12s ease, outline .08s ease;
+  display:inline-block;
+  font-family:'Press Start 2P';
+  font-size:12px;
+  padding:10px 14px;
+  background:#0e1440;
+  color:var(--fg);
+  border:1px solid var(--line);
+  border-radius:4px;                /* square-ish */
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.5) inset,
+    0 0 10px rgba(0,0,0,.25);
+  transition: transform .08s ease, outline .08s ease, box-shadow .12s ease;
 }
-
 .main-nav a:hover,
 .nav a:hover{
-  outline: 2px solid var(--accent-2);
-  outline-offset: -2px;
-  box-shadow: 0 0 22px var(--glow-2);
+  outline:2px solid var(--accent-2); outline-offset:-2px;
+  box-shadow: 0 0 20px var(--glow-2);
   transform: translateY(-1px);
 }
-
 .main-nav a.active,
 .nav a.active{
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
-  box-shadow: 0 0 16px var(--glow);
+  outline:2px solid var(--accent); outline-offset:-2px;
+  box-shadow: 0 0 18px var(--glow);
 }
 
-/* HERO — poster-like headline, neon kiss */
-.hero{
-  margin: 16px 0 18px;
-  background: linear-gradient(0deg, var(--scrim-strong), var(--scrim-strong));
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 18px 16px 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
-}
-.hero h1{
-  margin: 0 0 6px 0;
-  font-family: 'Press Start 2P';
-  font-size: 20px;
-  letter-spacing: 1.6px;
-  color: var(--fg);
-  text-shadow:
-    0 0 6px var(--glow),
-    0 0 20px var(--glow-2);
-}
-.hero p{
-  margin:0;
-  color: var(--muted);
-  font-size: 20px;
-}
+/* ============
+   HERO REMOVED
+   ============ */
+.hero{ display:none !important; }
 
-/* CARD — flat, square, low-shadow, crisp border */
+/* ==========================
+   CARD — SQUARE Y2K + POP
+   ========================== */
 .card{
   background: var(--ink);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 2px;                 /* square edge */
   padding: 16px;
-  box-shadow: 0 6px 16px rgba(0,0,0,.28);
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.6) inset,
+    0 0 22px rgba(0,0,0,.35);         /* depth without dullness */
+  position: relative;
+}
+.card:before{
+  /* neon edge ring for POP */
+  content:"";
+  position:absolute; inset:-2px;
+  border-radius: 2px;
+  pointer-events:none;
+  box-shadow:
+    0 0 10px var(--glow),
+    0 0 14px var(--glow-2);
+  opacity:.55;
 }
 
 /* GRID HELPERS */
-.grid{ display:grid; gap: 14px }
+.grid{ display:grid; gap: 16px }
 .grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)) }
 .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)) }
 @media (max-width: 880px){
@@ -228,11 +195,11 @@ a:hover{ color: var(--accent-2); text-decoration: none }
 /* GALLERY */
 .gallery img{
   width:100%; display:block;
-  border-radius: 4px;
+  border-radius: 2px;
   border:1px solid var(--line);
 }
 
-/* ICON BUTTONS (Links page) — monochrome, neon hover */
+/* ICON BUTTONS — mono with neon hover */
 .icon-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -243,71 +210,67 @@ a:hover{ color: var(--accent-2); text-decoration: none }
 .icon-btn{
   display:flex; align-items:center; justify-content:center; gap:10px;
   padding:14px;
-  background: var(--ink);
+  background:#0e1440;
   border:1px solid var(--line);
-  border-radius:6px;
+  border-radius:4px;
   font-family:'Press Start 2P';
   font-size:12px;
   transition: transform .08s ease, box-shadow .12s ease, outline .08s ease;
 }
 .icon-btn img, .icon-btn svg{
   width:22px; height:22px; image-rendering: pixelated;
-  filter: var(--icon-filter);          /* cyan tint */
-  opacity: .95;
+  filter: var(--icon-filter);
+  opacity:.95;
 }
 .icon-btn:hover{
-  outline: 2px solid var(--accent-2);
-  outline-offset: -2px;
+  outline:2px solid var(--accent-2); outline-offset:-2px;
   box-shadow: 0 0 22px var(--glow-2);
   transform: translateY(-1px);
 }
 .icon-btn:hover img, .icon-btn:hover svg{
-  filter: var(--icon-filter-hover);    /* magenta tint on hover */
+  filter: var(--icon-filter-hover);
 }
 
 /* SONG BLOCKS — square art, tight rhythm */
 .song{
-  display:grid; grid-template-columns: 120px 1fr; gap:14px; align-items:start;
+  display:grid; grid-template-columns: 120px 1fr; gap:16px; align-items:start;
 }
 .song img.art{
   width:120px; height:120px; object-fit:cover;
-  border-radius: 4px; border:1px solid var(--line);
+  border-radius: 2px; border:1px solid var(--line);
   image-rendering: pixelated;
+  box-shadow: 0 0 14px rgba(0,0,0,.35);
 }
 .song h3{
   margin:0 0 6px 0;
   font-family:'Press Start 2P';
   font-size:14px; letter-spacing:1px;
   color: var(--fg);
-  text-shadow: 0 0 6px rgba(0,0,0,.55);
+  text-shadow: 0 0 6px rgba(0,0,0,.6);
 }
-.song p{
-  margin:0 0 8px 0; color: var(--muted); font-size: 20px;
-}
-.song .listen{
-  display:flex; gap:8px; flex-wrap: wrap;
-}
+.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px }
+.song .listen{ display:flex; gap:8px; flex-wrap: wrap }
 .listen a{
   padding:6px 8px;
   border:1px solid var(--line);
-  border-radius:6px;
+  border-radius:4px;
   font-family:'Press Start 2P';
   font-size:10px;
-  background: #121536;
+  background:#121536;
 }
 .listen a:hover{
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
+  outline:2px solid var(--accent);
+  outline-offset:-2px;
 }
 
-/* AUDIO — compact with neon accent */
+/* AUDIO */
 audio{
   width:100%;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
   accent-color: var(--accent);
 }
 
-/* TYPE UTILITIES */
+/* TYPE */
 h1,h2,h3{ line-height: 1.25 }
 small,.muted{ color: var(--muted) }
 
@@ -317,21 +280,20 @@ small,.muted{ color: var(--muted) }
   padding: 18px 0; font-size: 18px
 }
 
-/* MOBILE POLISH */
+/* MOBILE */
 @media (max-width: 560px){
-  .brand{ font-size: 16px }
-  .wordmark{ font-size: 18px }            /* when using .site-header */
-  .hero h1{ font-size: 18px }
-  .hero p{ font-size: 18px }
+  .site-header .wordmark, .brand{ font-size: 18px }
+  .site-header .logo, .header .logo{ width:46px; height:46px }
   .song{ grid-template-columns: 96px 1fr }
   .song img.art{ width:96px; height:96px }
-  .wrapper::before{ margin: 54px 4px 14px }
+  .wrapper::before{ margin: 68px 4px 16px }
 }
 
-/* HIGH-CONTRAST MODE SUPPORT */
+/* HIGH CONTRAST */
 @media (prefers-contrast: more){
-  .wrapper::before{ background: rgba(9,11,27,0.75) }
-  .card, .hero{ box-shadow: none }
-  .nav a.active, .nav a:hover, .listen a:hover, .icon-btn:hover,
-  .main-nav a.active, .main-nav a:hover{ outline-width: 3px }
+  .card:before{ opacity:.85 }
+  .card{ box-shadow:none }
+  .main-nav a:hover, .nav a:hover,
+  .main-nav a.active, .nav a.active,
+  .listen a:hover{ outline-width:3px }
 }
