@@ -45,21 +45,12 @@ body:before{
   pointer-events:none; mix-blend-mode: overlay;
 }
 
-/* WRAPPER + frame */
-/*.wrapper{
+.wrapper {
   max-width: 980px;
   margin: 0 auto;
   padding: 20px 18px 28px;
-  position: relative; z-index: 1;
 }
-.wrapper::before{
-  content:""; position:absolute; inset:0;
-  margin: 112px 6px 20px;
-  border: 1px solid rgba(46,49,128,.65);
-  border-radius: 3px; background: transparent; z-index: 0;
-  box-shadow: 0 0 24px var(--glow), 0 0 28px var(--glow-2);
-}
-.wrapper > *{ position: relative; z-index: 1; }*/
+
 
 /* global link */
 a{ color: var(--accent); text-decoration: none; text-shadow: 0 0 6px rgba(99,228,255,.35); }
