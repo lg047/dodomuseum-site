@@ -1,1 +1,197 @@
+/* === Y2K Pixel Dreampop Theme ===
+   - Fonts: Press Start 2P (titles), VT323 (body)
+   - Pixel borders, soft gradients, CRT lines, subtle glow
+   - Mobile-first, responsive
+*/
+
+@font-face{
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face{
+  font-family: 'VT323';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJA.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root{
+  --bg: #0d0b1a;
+  --bg-2: #14122b;
+  --fg: #e6f0ff;
+  --muted: #b9c4ff;
+  --accent: #9cf0ff;
+  --accent-2: #ffd6ff;
+  --card: #1a1733;
+  --link: #9cf0ff;
+  --border: #5a5fff;
+  --shadow: rgba(156, 240, 255, 0.3);
+}
+
+*{ box-sizing: border-box }
+
+html,body{
+  margin:0; padding:0;
+  background: radial-gradient(1200px 800px at 10% -10%, #1e1944, transparent 60%),
+              radial-gradient(1000px 600px at 90% 10%, #0e2444, transparent 60%),
+              var(--bg);
+  color: var(--fg);
+  font-family: 'VT323', monospace;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+
+/* Faint CRT scanlines */
+body:before{
+  content:"";
+  position: fixed; inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03), rgba(255,255,255,0.03) 1px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 3px
+  );
+  pointer-events:none;
+  mix-blend-mode: overlay;
+}
+
+a{ color: var(--link); text-decoration: none }
+a:hover{ text-decoration: underline }
+
+/* Container */
+.wrapper{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header / Nav */
+.header{
+  display:flex; align-items:center; gap:16px;
+  padding: 16px 0 8px;
+}
+.header img.logo{
+  width: 42px; height: 42px; image-rendering: pixelated;
+}
+.brand{
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  text-transform: lowercase;
+  letter-spacing: 1.5px;
+  color: var(--fg);
+  text-shadow: 0 0 10px var(--shadow);
+}
+
+.nav{
+  margin-top: 16px;
+  display:flex; gap: 12px; flex-wrap: wrap;
+}
+.nav a{
+  font-family: 'Press Start 2P';
+  font-size: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, #262355, #17153b);
+  color: var(--fg);
+  border: 2px solid var(--border);
+  box-shadow: 0 0 0 2px #000 inset, 0 4px 14px var(--shadow);
+  border-radius: 8px;
+  image-rendering: pixelated;
+}
+.nav a.active,
+.nav a:hover{
+  background: linear-gradient(180deg, #3a3777, #201e55);
+  box-shadow: 0 0 0 2px #000 inset, 0 6px 18px var(--shadow);
+}
+
+/* Hero / banner */
+.hero{
+  margin: 18px 0 24px;
+  background: url('../assets/img/hero-stars.png') center/cover no-repeat, linear-gradient(180deg, #18163a, #0f0d25);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px var(--shadow);
+  padding: 18px;
+}
+.hero h1{
+  margin: 0 0 10px 0;
+  font-family: 'Press Start 2P';
+  font-size: 18px;
+  letter-spacing: 1.5px;
+}
+.hero p{
+  margin:0; color: var(--muted); font-size: 20px;
+}
+
+/* Cards (pixel edges) */
+.card{
+  background: linear-gradient(180deg, var(--card), var(--bg-2));
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 22px var(--shadow);
+}
+
+/* Grid helpers */
+.grid{
+  display:grid; gap: 16px;
+}
+.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)) }
+
+@media (max-width: 880px){
+  .grid-2, .grid-3{ grid-template-columns: 1fr }
+}
+
+/* About page gallery */
+.gallery img{
+  width:100%; display:block; border-radius: 8px; border:2px solid var(--border);
+  box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Icon buttons (Links page) */
+.icon-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 16px;
+}
+@media (max-width: 640px){
+  .icon-grid{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+}
+.icon-btn{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:16px;
+  background: linear-gradient(180deg, #25224f, #16143a);
+  border:2px solid var(--border);
+  border-radius:12px;
+  box-shadow: 0 8px 18px var(--shadow);
+  font-family:'Press Start 2P';
+  font-size:12px;
+}
+.icon-btn img, .icon-btn svg{ width:22px; height:22px; image-rendering: pixelated }
+
+/* Songs list */
+.song{
+  display:grid; grid-template-columns: 120px 1fr; gap:16px; align-items:start;
+}
+.song img.art{
+  width:120px; height:120px; object-fit:cover; border-radius: 8px; border:2px solid var(--border);
+  image-rendering: pixelated;
+}
+.song h3{
+  margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px; letter-spacing:1px;
+}
+.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px }
+.song .listen{
+  display:flex; gap:10px; flex-wrap: wrap;
+}
+.listen a{
+  padding:8px 10px; border:2px solid var(--border); border-radius:10px; font-family:'Press Start 2P'; font-size:10px;
+  background: linear-gradient(180deg, #25224f, #16143a);
+}
+
+/* Footer */
+.footer{ text-align:center; color: var(--muted); padding: 24px 0; font-size: 18px }
 
