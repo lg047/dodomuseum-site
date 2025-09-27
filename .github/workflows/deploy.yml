@@ -1,0 +1,58 @@
+name: Build and Deploy Dodo Museum site
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+# Required for Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # OPTIONAL: If you later add a build step (npm, vite, etc.), keep this.
+      # If you're just serving static HTML/CSS/JS, this will do nothing and is safe.
+      - name: Set up Node (optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Uncomment these if you add a package.json + build script later
+      # - name: Install deps
+      #   run: npm ci
+      #
+      # - name: Build
+      #   run: npm run build
+
+      # For a purely static site, we’ll publish the repo root.
+      # If you later build to "dist", change path: ./dist
+      - name: Prepare Pages artifact
+        run: |
+          touch .nojekyll   # prevents GitHub Pages from running Jekyll
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
