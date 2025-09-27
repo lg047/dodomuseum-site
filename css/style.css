@@ -125,8 +125,8 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 }
 .card:before{
   content:""; position:absolute; inset:-2px; border-radius:2px; pointer-events:none;
-  box-shadow: 0 0 16px var(--glow), 0 0 10px var(--glow-2);
-  opacity:.85;
+  box-shadow: 0 0 16px var(--glow), 0 0 7px var(--glow-2);
+  opacity:.65;
 }
 
 /* GRIDS */
@@ -137,8 +137,8 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 
 /* GALLERY */
 .gallery img{
-  width:100%; display:block; border-radius:2px; border:1px solid var(--line);
-  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 18px var(--glow);
+  width:100%; display:block; border-radius:2px; border:0px solid var(--line);
+  box-shadow: 0 0 0px rgba(0,0,0,.35), 0 0 8px var(--glow);
 }
 
 /* ICON GRID */
@@ -184,14 +184,14 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 .song h3{
   margin:0 0 6px 0; font-family:'Press Start 2P';
   font-size:14px; letter-spacing:1px; color: var(--fg);
-  text-shadow: 0 0 8px var(--glow), 0 0 4px var(--glow-2);
+  text-shadow: 0 0 8px var(--glow), 0 0 3px var(--glow-2);
 }
 .song p{ margin:0 0 10px 0; color: var(--muted); }
 .song .listen{ display:flex; gap:8px; flex-wrap: wrap }
 .listen a{
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
-  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 4px var(--glow);
+  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 0px var(--glow);
 }
 .listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 8px var(--glow) }
 
