@@ -119,8 +119,8 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   padding: 16px;
   box-shadow:
     0 2px 0 rgba(0,0,0,.6) inset,
-    0 0 10px rgba(0,0,0,.4),
-    0 0 10px var(--glow);
+    0 0 4px rgba(0,0,0,.4),
+    0 0 4px var(--glow);
   position: relative;
 }
 .card:before{
@@ -138,8 +138,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 /* GALLERY */
 .gallery img{
   width:100%; display:block; border-radius:0px; border:0px solid var(--line);
-  box-shadow: 0 0 0px rgba(0,0,0,.35), 0 0 18px var(--glow); 
-  opacity:.15;
+  box-shadow: 0 0 0px rgba(0,0,0,.35), 0 0 0px var(--glow);
 }
 
 /* ICON GRID */
