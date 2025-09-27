@@ -125,7 +125,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 }
 .card:before{
   content:""; position:absolute; inset:-2px; border-radius:2px; pointer-events:none;
-  box-shadow: 0 0 16px var(--glow), 0 0 22px var(--glow-2);
+  box-shadow: 0 0 16px var(--glow), 0 0 10px var(--glow-2);
   opacity:.85;
 }
 
@@ -193,7 +193,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
   box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 4px var(--glow);
 }
-.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 6px var(--glow) }
+.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 8px var(--glow) }
 
 /* Featured song */
 .featured-song{
@@ -226,7 +226,7 @@ p, li, ul, ol, blockquote, .card, .song p, .featured-song p, .about p {
 /* AUDIO */
 audio{
   width:100%;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45)) drop-shadow(0 0 4px var(--glow));
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45)) drop-shadow(0 0 0px var(--glow));
   accent-color: var(--accent);
 }
 
