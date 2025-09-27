@@ -95,7 +95,7 @@ a:hover{ color: var(--accent-2); }
 }
 
 .nav{
-  margin-top: 12px; margin-bottom: 48px;   /* SPACE BELOW NAV ON ALL PAGES */
+  margin-top: 20px; margin-bottom:20px;   /* SPACE BELOW NAV ON ALL PAGES */
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
 }
 .nav a{
