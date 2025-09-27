@@ -8,6 +8,43 @@
   <link rel="icon" href="favicon.ico">
   <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scoped tweaks for promo thumbs (no changes to style.css required) -->
+  <style>
+    .promo { max-width: 720px; margin: 20px auto 0; display: grid; gap: 22px; }
+    .promo-card { position: relative; display: block; text-decoration: none; border-radius: 6px; overflow: hidden; }
+    .promo-card img{
+      width: 100%; display: block; border-radius: 6px;
+      /* both 16:9, Spotify will crop nicely */
+      aspect-ratio: 16 / 9; object-fit: cover;
+      /* undo global pixelation just for these */
+      image-rendering: auto !important;
+      box-shadow: 0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);
+      background:#0e1440;
+    }
+    /* Glass caption attached to the bottom of the image */
+    .promo-caption{
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 10px 12px;
+      font-family: 'VT323', monospace;
+      font-size: 18px; line-height: 1.1; letter-spacing: .4px;
+      color: var(--fg);
+      background: linear-gradient(to top, rgba(10,14,40,.72), rgba(10,14,40,.38));
+      backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(99,228,255,.25);
+      text-shadow: 0 0 6px rgba(99,228,255,.35);
+    }
+    .promo-caption .sub{
+      opacity:.9; font-size:16px;
+    }
+    /* Optional tiny platform pill on the right */
+    .promo-badge{
+      position:absolute; right:10px; bottom:10px;
+      padding: 4px 8px; border:1px solid var(--line); border-radius: 999px;
+      font-family: 'Press Start 2P', cursive; font-size:10px;
+      background:#0e1440; box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 14px var(--glow);
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -24,7 +61,7 @@
       <a href="about.html">about</a>
     </nav>
 
-    <!-- Main social icons (Linktree-style) -->
+    <!-- Social icons -->
     <section class="grid icon-grid" aria-label="Follow Dodo Museum">
       <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" aria-label="Spotify" target="_blank" rel="noopener">
         <img src="assets/icons/spotify.svg" alt="">
@@ -46,23 +83,22 @@
       </a>
     </section>
 
-    <!-- Vertically stacked promo thumbnails (no cards, minimal labels) -->
-    <section aria-label="Current releases" style="max-width:720px;margin:20px auto 0">
-      <!-- Spotify (uses your local cover art file) -->
-      <a href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=99c82dcf6c404bb2" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+    <!-- Vertically stacked promo thumbnails with glass captions -->
+    <section class="promo" aria-label="Current releases">
+      <!-- Spotify -->
+      <a class="promo-card" href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" rel="noopener" aria-label="Lan Kwai Fong on Spotify">
         <img
-          src="assets/img/art-lankwaifong.jpg"
-          alt="Lan Kwai Fong — cover art (Spotify)"
-          style="width:100%;display:block;border-radius:2px;image-rendering:pixelated;
-                 box-shadow:0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);">
-        <small class="muted" style="display:block;margin:8px 2px 18px 2px;">Lan Kwai Fong | Spotify</small>
+          src="assets/img/lan-kwai-fong-art.jpg"
+          alt="Lan Kwai Fong — cover art (Spotify)">
+        <div class="promo-caption">
+          Lan Kwai Fong <span class="sub">| Spotify</span>
+        </div>
+        <div class="promo-badge">Spotify</div>
       </a>
 
-
-    <!-- YouTube thumbnail (links out) -->
-      <a href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener">
+      <!-- YouTube -->
+      <a class="promo-card" href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener" aria-label="Lan Kwai Fong music video on YouTube">
         <img
-          class="thumb thumb--wide"
           src="https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg"
           srcset="
             https://img.youtube.com/vi/2VeLFsVPUlA/maxresdefault.jpg 1280w,
@@ -70,11 +106,13 @@
             https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg 480w"
           sizes="(min-width: 720px) 720px, 100vw"
           alt="Lan Kwai Fong — music video thumbnail (YouTube)">
-        <small class="label muted">Lan Kwai Fong | Music Video</small>
+        <div class="promo-caption">
+          Lan Kwai Fong <span class="sub">| Music Video</span>
+        </div>
+        <div class="promo-badge">YouTube</div>
       </a>
+    </section>
 
-
-    <!-- Footer -->
     <footer class="footer" style="margin-top:20px">© Dodo Museum</footer>
   </div>
 
