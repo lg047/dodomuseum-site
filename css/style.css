@@ -1,4 +1,4 @@
-/* === Dodo Museum — Neon Flat v3.5 (square Y2K, punchy, body font unified) === */
+/* === Dodo Museum — Neon Flat v3.6 (VT323 locked, extra glow) === */
 
 /* FONTS */
 @font-face{
@@ -16,7 +16,7 @@
   font-display: swap;
 }
 
-/* PALETTE */
+/* PALETTE + GLOW */
 :root{
   --fg: #EAF2FF;
   --muted: #C8D6FF;
@@ -24,20 +24,24 @@
   --line: #2E3180;
   --accent: #63E4FF;
   --accent-2: #FF6EDC;
-  --glow: rgba(99,228,255,.55);
-  --glow-2: rgba(255,110,220,.45);
+
+  /* stronger glow */
+  --glow: rgba(99,228,255,.85);
+  --glow-2: rgba(255,110,220,.75);
 
   --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
   --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
 }
 
-/* BACKGROUND: raw image */
+/* BACKGROUND */
 html, body{
   margin:0; padding:0;
   background: url('../assets/img/bg-hk.webp') no-repeat center top;
   background-size: cover;
   image-rendering: pixelated;
   color: var(--fg);
+
+  /* authoritative body text */
   font-family: 'VT323', monospace;
   font-size: 14px;
   line-height: 1.4;
@@ -55,7 +59,7 @@ body:before{
   pointer-events:none; mix-blend-mode: overlay;
 }
 
-/* WRAPPER + faint frame */
+/* WRAPPER + frame */
 .wrapper{
   max-width: 980px;
   margin: 0 auto;
@@ -64,71 +68,88 @@ body:before{
 }
 .wrapper::before{
   content:""; position:absolute; inset:0;
-  margin: 112px 6px 20px;     /* EXTRA SPACE BELOW NAV */
-  border: 1px solid rgba(46,49,128,.55);
+  margin: 112px 6px 20px;
+  border: 1px solid rgba(46,49,128,.65);
   border-radius: 3px; background: transparent; z-index: 0;
+  box-shadow: 0 0 24px var(--glow), 0 0 28px var(--glow-2);
 }
 .wrapper > *{ position: relative; z-index: 1; }
 
 /* global link */
-a{ color: var(--accent); text-decoration: none }
-a:hover{ color: var(--accent-2); }
+a{ color: var(--accent); text-decoration: none; text-shadow: 0 0 6px rgba(99,228,255,.35); }
+a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 
-/* HEADER + NAV (centered) */
+/* HEADER + NAV */
 .header{
   margin: 8px 0 0;
   padding: 14px 14px 10px;
-  background: rgba(11,15,42,.85);
+  background: rgba(11,15,42,.9);
   border: 1px solid var(--line);
   border-radius: 6px;
-  box-shadow: 0 0 18px rgba(0,0,0,.45), 0 0 16px var(--glow);
+  box-shadow:
+    0 0 28px rgba(0,0,0,.55),
+    0 0 28px var(--glow),
+    0 0 36px var(--glow-2);
   display:flex; align-items:center; justify-content:center; gap:12px; text-align:center;
 }
 .header .logo{
   width: 60px; height: 60px; image-rendering: pixelated;
-  filter: drop-shadow(0 0 8px var(--glow));
+  filter: drop-shadow(0 0 12px var(--glow)) drop-shadow(0 0 16px var(--glow-2));
 }
 .brand{
   margin:0; font-family:'Press Start 2P', cursive;
   font-size: 24px; letter-spacing: 1.8px; text-transform: lowercase;
   color: var(--fg);
-  text-shadow: 0 0 10px var(--glow), 0 0 18px var(--glow-2);
+  text-shadow: 0 0 12px var(--glow), 0 0 22px var(--glow-2), 0 0 32px var(--glow);
 }
 
 .nav{
-  margin-top: 20px; margin-bottom:20px;   /* SPACE BELOW NAV ON ALL PAGES */
+  margin: 20px 0;
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
 }
 .nav a{
   display:inline-block; font-family:'Press Start 2P'; font-size:12px;
   padding:10px 14px; background:#0e1440; color:var(--fg);
   border:1px solid var(--line); border-radius:4px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.5) inset, 0 0 10px rgba(0,0,0,.25);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.5) inset,
+    0 0 12px rgba(0,0,0,.35),
+    0 0 14px var(--glow);
   transition: transform .08s ease, box-shadow .12s ease;
 }
 .nav a:hover{
-  box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 20px var(--glow-2);
+  box-shadow:
+    0 0 0 2px var(--accent-2) inset,
+    0 0 24px var(--glow-2),
+    0 0 24px var(--glow);
   transform: translateY(-1px);
 }
 .nav a.active{
-  box-shadow: 0 0 0 2px var(--accent) inset, 0 0 18px var(--glow);
+  box-shadow:
+    0 0 0 2px var(--accent) inset,
+    0 0 22px var(--glow),
+    0 0 22px var(--glow-2);
 }
 
 /* HERO — hidden */
 .hero{ display:none !important; }
 
-/* CARD — square + pop */
+/* CARD */
 .card{
   background: var(--ink);
   border: 1px solid var(--line);
   border-radius: 2px;
   padding: 16px;
-  box-shadow: 0 2px 0 rgba(0,0,0,.6) inset, 0 0 22px rgba(0,0,0,.35);
+  box-shadow:
+    0 2px 0 rgba(0,0,0,.6) inset,
+    0 0 28px rgba(0,0,0,.4),
+    0 0 24px var(--glow);
   position: relative;
 }
 .card:before{
   content:""; position:absolute; inset:-2px; border-radius:2px; pointer-events:none;
-  box-shadow: 0 0 10px var(--glow), 0 0 14px var(--glow-2); opacity:.55;
+  box-shadow: 0 0 16px var(--glow), 0 0 22px var(--glow-2);
+  opacity:.85;
 }
 
 /* GRIDS */
@@ -140,9 +161,10 @@ a:hover{ color: var(--accent-2); }
 /* GALLERY */
 .gallery img{
   width:100%; display:block; border-radius:2px; border:1px solid var(--line);
+  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 18px var(--glow);
 }
 
-/* ==== ICON-ONLY LINK GRID ==== */
+/* ICON GRID */
 .icon-grid{
   display:grid;
   grid-template-columns: repeat(6,84px);
@@ -160,6 +182,7 @@ a:hover{ color: var(--accent-2); }
   border:1px solid var(--line);
   border-radius:4px;
   font-size:0; line-height:0;
+  box-shadow: 0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);
 }
 .icon-btn img, .icon-btn svg{
   width:60px; height:60px; display:block;
@@ -167,60 +190,66 @@ a:hover{ color: var(--accent-2); }
   filter: var(--icon-filter);
 }
 .icon-btn:hover{
-  box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 22px var(--glow-2);
+  box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 28px var(--glow-2), 0 0 28px var(--glow);
 }
 .icon-btn:hover img, .icon-btn:hover svg{ filter: var(--icon-filter-hover); }
 
-/* SONG BLOCKS (songs.html) */
+/* SONG BLOCKS */
 .song{
   display:grid; grid-template-columns: 120px 1fr; gap:16px; align-items:start;
 }
 .song img.art{
   width:120px; height:120px; object-fit:cover;
   border-radius: 2px; border:1px solid var(--line);
-  image-rendering: pixelated; box-shadow: 0 0 14px rgba(0,0,0,.35);
+  image-rendering: pixelated;
+  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 18px var(--glow);
 }
 .song h3{
   margin:0 0 6px 0; font-family:'Press Start 2P';
   font-size:14px; letter-spacing:1px; color: var(--fg);
-  text-shadow: 0 0 6px rgba(0,0,0,.6);
+  text-shadow: 0 0 8px var(--glow), 0 0 12px var(--glow-2);
 }
 .song p{ margin:0 0 10px 0; color: var(--muted); }
 .song .listen{ display:flex; gap:8px; flex-wrap: wrap }
 .listen a{
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
+  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 14px var(--glow);
 }
-.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
+.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 20px var(--glow) }
 
-/* OPTIONAL Featured song (index.html) */
+/* Featured song */
 .featured-song{
   display:grid; grid-template-columns: 160px 1fr; gap:16px; align-items:start;
 }
 .featured-song .thumb{
   width:160px; height:160px; object-fit:cover; border-radius:2px;
-  border:1px solid var(--line); image-rendering: pixelated; box-shadow: 0 0 14px rgba(0,0,0,.35);
+  border:1px solid var(--line);
+  image-rendering: pixelated;
+  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 18px var(--glow);
 }
-.featured-song h3{ margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px }
+.featured-song h3{ margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px; text-shadow: 0 0 8px var(--glow) }
 .featured-song .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
 .featured-song .cta a{
   padding:8px 10px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
+  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 14px var(--glow);
 }
-.featured-song .cta a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
+.featured-song .cta a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 20px var(--glow) }
 
-/* BODY TEXT (all pages unified) */
-p, li, .card, .song p, .featured-song p, .about p {
+/* BODY TEXT (all pages unified, VT323 locked) */
+p, li, ul, ol, blockquote, .card, .song p, .featured-song p, .about p {
   font-family: 'VT323', monospace;
   font-size: 14px;
   line-height: 1.4;
   color: var(--fg);
+  text-shadow: 0 0 6px rgba(99,228,255,.25); /* subtle readable glow */
 }
 
 /* AUDIO */
 audio{
   width:100%;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.45)) drop-shadow(0 0 14px var(--glow));
   accent-color: var(--accent);
 }
 
