@@ -179,19 +179,19 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   width:120px; height:120px; object-fit:cover;
   border-radius: 2px; border:1px solid var(--line);
   image-rendering: pixelated;
-  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 18px var(--glow);
+  box-shadow: 0 0 16px rgba(0,0,0,.35), 0 0 0px var(--glow);
 }
 .song h3{
   margin:0 0 6px 0; font-family:'Press Start 2P';
   font-size:14px; letter-spacing:1px; color: var(--fg);
-  text-shadow: 0 0 8px var(--glow), 0 0 12px var(--glow-2);
+  text-shadow: 0 0 8px var(--glow), 0 0 4px var(--glow-2);
 }
 .song p{ margin:0 0 10px 0; color: var(--muted); }
 .song .listen{ display:flex; gap:8px; flex-wrap: wrap }
 .listen a{
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
-  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 14px var(--glow);
+  box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 4px var(--glow);
 }
 .listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 20px var(--glow) }
 
@@ -220,7 +220,7 @@ p, li, ul, ol, blockquote, .card, .song p, .featured-song p, .about p {
   font-size: 14px;
   line-height: 1.4;
   color: var(--fg);
-  text-shadow: 0 0 6px rgba(99,228,255,.25);
+  text-shadow: 0 0 2px rgba(99,228,255,.25);
 }
 
 /* AUDIO */
