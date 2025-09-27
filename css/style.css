@@ -24,10 +24,11 @@
   --line: #2E3180;
   --accent: #63E4FF;
   --accent-2: #FF6EDC;
+  
+  --glow: rgba(99,228,255,.55);   /* old was .55 */
+  --glow-2: rgba(255,110,220,.45); /* old was .45 */
+}
 
-  /* stronger glow */
-  --glow: rgba(99,228,255,.85);
-  --glow-2: rgba(255,110,220,.75);
 
   --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
   --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
