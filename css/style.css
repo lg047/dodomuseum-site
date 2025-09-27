@@ -193,7 +193,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
   box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 4px var(--glow);
 }
-.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 20px var(--glow) }
+.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset, 0 0 6px var(--glow) }
 
 /* Featured song */
 .featured-song{
