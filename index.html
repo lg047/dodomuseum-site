@@ -51,23 +51,28 @@
       <!-- Spotify (uses your local cover art file) -->
       <a href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=99c82dcf6c404bb2" target="_blank" rel="noopener" style="display:block;text-decoration:none">
         <img
-          src="assets/img/art-lankwaifonga.jpg"
+          src="assets/img/art-lankwaifong.jpg"
           alt="Lan Kwai Fong — cover art (Spotify)"
           style="width:100%;display:block;border-radius:2px;image-rendering:pixelated;
                  box-shadow:0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);">
         <small class="muted" style="display:block;margin:8px 2px 18px 2px;">Lan Kwai Fong | Spotify</small>
       </a>
 
-      <!-- YouTube (official thumbnail pulled from YouTube) -->
-      <a href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener" style="display:block;text-decoration:none">
+
+    <!-- YouTube thumbnail (links out) -->
+      <a href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener">
         <img
-          src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID/hqdefault.jpg"
-          alt="Lan Kwai Fong — music video thumbnail (YouTube)"
-          style="width:100%;display:block;border-radius:2px;image-rendering:pixelated;
-                 box-shadow:0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);">
-        <small class="muted" style="display:block;margin:8px 2px 0 2px;">Lan Kwai Fong | Music Video</small>
+          class="thumb thumb--wide"
+          src="https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg"
+          srcset="
+            https://img.youtube.com/vi/2VeLFsVPUlA/maxresdefault.jpg 1280w,
+            https://img.youtube.com/vi/2VeLFsVPUlA/sddefault.jpg 640w,
+            https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg 480w"
+          sizes="(min-width: 720px) 720px, 100vw"
+          alt="Lan Kwai Fong — music video thumbnail (YouTube)">
+        <small class="label muted">Lan Kwai Fong | Music Video</small>
       </a>
-    </section>
+
 
     <!-- Footer -->
     <footer class="footer" style="margin-top:20px">© Dodo Museum</footer>
