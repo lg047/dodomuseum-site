@@ -44,7 +44,7 @@ html, body{
 }
 
 /* Subtle scanlines */
-body:before{
+body::before{
   content:""; position: fixed; inset:0;
   background: repeating-linear-gradient(
     to bottom,
@@ -70,7 +70,7 @@ body:before{
 .wrapper > *{ position: relative; z-index: 1; }
 
 /* global link */
-a{ color: var(--accent); text-decoration: none }
+a{ color: var(--accent); text-decoration: none; }
 a:hover{ color: var(--accent-2); }
 
 /* HEADER + NAV (centered) */
@@ -126,16 +126,16 @@ a:hover{ color: var(--accent-2); }
   box-shadow: 0 2px 0 rgba(0,0,0,.6) inset, 0 0 22px rgba(0,0,0,.35);
   position: relative;
 }
-.card:before{
+.card::before{
   content:""; position:absolute; inset:-2px; border-radius:2px; pointer-events:none;
   box-shadow: 0 0 10px var(--glow), 0 0 14px var(--glow-2); opacity:.55;
 }
 
 /* GRIDS */
-.grid{ display:grid; gap: 16px }
-.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)) }
-.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)) }
-@media (max-width: 880px){ .grid-2, .grid-3{ grid-template-columns: 1fr } }
+.grid{ display:grid; gap: 16px; }
+.grid-2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 880px){ .grid-2, .grid-3{ grid-template-columns: 1fr; } }
 
 /* GALLERY */
 .gallery img{
@@ -149,9 +149,9 @@ a:hover{ color: var(--accent-2); }
   gap:16px;
   justify-content:center;
 }
-@media (max-width: 900px){ .icon-grid{ grid-template-columns: repeat(5,72px) } }
-@media (max-width: 740px){ .icon-grid{ grid-template-columns: repeat(4,72px) } }
-@media (max-width: 560px){ .icon-grid{ grid-template-columns: repeat(3,72px) } }
+@media (max-width: 900px){ .icon-grid{ grid-template-columns: repeat(5,72px); } }
+@media (max-width: 740px){ .icon-grid{ grid-template-columns: repeat(4,72px); } }
+@media (max-width: 560px){ .icon-grid{ grid-template-columns: repeat(3,72px); } }
 
 .icon-btn{
   width:72px; height:72px; padding:0;
@@ -186,8 +186,8 @@ a:hover{ color: var(--accent-2); }
   font-size:14px; letter-spacing:1px; color: var(--fg);
   text-shadow: 0 0 6px rgba(0,0,0,.6);
 }
-.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px }
-.song .listen{ display:flex; gap:8px; flex-wrap: wrap }
+.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px; }
+.song .listen{ display:flex; gap:8px; flex-wrap: wrap; }
 .listen a{
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
@@ -202,13 +202,13 @@ a:hover{ color: var(--accent-2); }
   width:160px; height:160px; object-fit:cover; border-radius:2px;
   border:1px solid var(--line); image-rendering: pixelated; box-shadow: 0 0 14px rgba(0,0,0,.35);
 }
-.featured-song h3{ margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px }
-.featured-song .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+.featured-song h3{ margin:0 0 8px 0; font-family:'Press Start 2P'; font-size:14px; }
+.featured-song .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
 .featured-song .cta a{
   padding:8px 10px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
 }
-.featured-song .cta a:hover{ outline:2px solid var(--accent); outline-offset:-2px }
+.featured-song .cta a:hover{ outline:2px solid var(--accent); outline-offset:-2px; }
 
 /* AUDIO */
 audio{
@@ -218,24 +218,24 @@ audio{
 }
 
 /* TYPE */
-h1,h2,h3{ line-height: 1.25 }
-small,.muted{ color: var(--muted) }
+h1,h2,h3{ line-height: 1.25; }
+small,.muted{ color: var(--muted); }
 
 /* FOOTER */
-.footer{ text-align:center; color: var(--muted); padding: 18px 0; font-size: 18px }
+.footer{ text-align:center; color: var(--muted); padding: 18px 0; font-size: 18px; }
 
 /* MOBILE */
 @media (max-width: 560px){
-  .brand{ font-size: 18px }
-  .header .logo{ width:46px; height:46px }
-  .song{ grid-template-columns: 96px 1fr }
-  .song img.art{ width:96px; height:96px }
-  .wrapper::before{ margin: 108px 4px 16px }
+  .brand{ font-size: 18px; }
+  .header .logo{ width:46px; height:46px; }
+  .song{ grid-template-columns: 96px 1fr; }
+  .song img.art{ width:96px; height:96px; }
+  .wrapper::before{ margin: 108px 4px 16px; }
 }
 
 /* HIGH CONTRAST */
 @media (prefers-contrast: more){
-  .card:before{ opacity:.85 }
-  .card{ box-shadow:none }
-  .nav a:hover, .nav a.active, .listen a:hover{ outline-width:3px }
+  .card::before{ opacity:.85; }
+  .card{ box-shadow:none; }
+  .nav a:hover, .nav a.active, .listen a:hover{ outline-width:3px; }
 }
