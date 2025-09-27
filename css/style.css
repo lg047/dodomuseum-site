@@ -209,6 +209,14 @@ a:hover{ color: var(--accent-2); }
 }
 .featured-song .cta a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
 
+/* BODY TEXT (song descriptions, about bio, etc.) */
+body, p, .song p, .featured-song p, .about p {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
 /* AUDIO */
 audio{
   width:100%;
