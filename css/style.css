@@ -1,4 +1,4 @@
-/* === Dodo Museum — Neon Flat v3.4 (square Y2K, punchy, body font fix) === */
+/* === Dodo Museum — Neon Flat v3.5 (square Y2K, punchy, body font unified) === */
 
 /* FONTS */
 @font-face{
@@ -39,7 +39,8 @@ html, body{
   image-rendering: pixelated;
   color: var(--fg);
   font-family: 'VT323', monospace;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.4;
   letter-spacing: .3px;
 }
 
@@ -105,7 +106,6 @@ a:hover{ color: var(--accent-2); }
   box-shadow: 0 0 0 1px rgba(0,0,0,.5) inset, 0 0 10px rgba(0,0,0,.25);
   transition: transform .08s ease, box-shadow .12s ease;
 }
-/* INNER RING so spacing stays symmetrical */
 .nav a:hover{
   box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 20px var(--glow-2);
   transform: translateY(-1px);
@@ -142,7 +142,7 @@ a:hover{ color: var(--accent-2); }
   width:100%; display:block; border-radius:2px; border:1px solid var(--line);
 }
 
-/* ==== ICON-ONLY LINK GRID (BIGGER + CENTERED) ==== */
+/* ==== ICON-ONLY LINK GRID ==== */
 .icon-grid{
   display:grid;
   grid-template-columns: repeat(6,84px);
@@ -159,7 +159,7 @@ a:hover{ color: var(--accent-2); }
   background:#0e1440;
   border:1px solid var(--line);
   border-radius:4px;
-  font-size:0; line-height:0;          /* hides any stray text baseline */
+  font-size:0; line-height:0;
 }
 .icon-btn img, .icon-btn svg{
   width:60px; height:60px; display:block;
@@ -209,11 +209,12 @@ a:hover{ color: var(--accent-2); }
 }
 .featured-song .cta a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
 
-/* BODY TEXT (song descriptions, about bio, etc.) */
-body, p, .song p, .featured-song p, .about p {
+/* BODY TEXT (all pages unified) */
+p, li, .card, .song p, .featured-song p, .about p {
   font-family: 'VT323', monospace;
   font-size: 14px;
   line-height: 1.4;
+  color: var(--fg);
 }
 
 /* AUDIO */
