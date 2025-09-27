@@ -1,4 +1,4 @@
-/* === Dodo Museum — Neon Flat v3.2 (square Y2K, punchy, fixes) === */
+/* === Dodo Museum — Neon Flat v3.2 (square Y2K, punchy) === */
 
 /* FONTS */
 @font-face{
@@ -54,17 +54,24 @@ body:before{
   pointer-events:none; mix-blend-mode: overlay;
 }
 
-/* WRAPPER (no inner frame to avoid odd overlaps) */
+/* WRAPPER + faint frame */
 .wrapper{
   max-width: 980px;
   margin: 0 auto;
   padding: 20px 18px 28px;
   position: relative; z-index: 1;
 }
+.wrapper::before{
+  content:""; position:absolute; inset:0;
+  margin: 112px 6px 20px;     /* EXTRA SPACE BELOW NAV */
+  border: 1px solid rgba(46,49,128,.55);
+  border-radius: 3px; background: transparent; z-index: 0;
+}
+.wrapper > *{ position: relative; z-index: 1; }
 
-/* global links */
+/* global link */
 a{ color: var(--accent); text-decoration: none }
-a:hover{ color: var(--accent-2) }
+a:hover{ color: var(--accent-2); }
 
 /* HEADER + NAV (centered) */
 .header{
@@ -87,10 +94,8 @@ a:hover{ color: var(--accent-2) }
   text-shadow: 0 0 10px var(--glow), 0 0 18px var(--glow-2);
 }
 
-/* NAV — reliable spacing below on ALL pages */
 .nav{
-  margin-top: 12px;
-  margin-bottom: 48px !important;   /* force gap before page content */
+  margin-top: 12px; margin-bottom: 48px;   /* SPACE BELOW NAV ON ALL PAGES */
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
 }
 .nav a{
@@ -98,22 +103,21 @@ a:hover{ color: var(--accent-2) }
   padding:10px 14px; background:#0e1440; color:var(--fg);
   border:1px solid var(--line); border-radius:4px;
   box-shadow: 0 0 0 1px rgba(0,0,0,.5) inset, 0 0 10px rgba(0,0,0,.25);
-  transition: transform .08s ease, outline .08s ease, box-shadow .12s ease;
+  transition: transform .08s ease, box-shadow .12s ease;
 }
-
+/* INNER RING so spacing stays symmetrical */
 .nav a:hover{
-  outline: none;
   box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 20px var(--glow-2);
+  transform: translateY(-1px);
 }
 .nav a.active{
-  outline: none;
   box-shadow: 0 0 0 2px var(--accent) inset, 0 0 18px var(--glow);
 }
 
-/* Hide the hero strip completely so content sits right under nav */
+/* HERO — hidden */
 .hero{ display:none !important; }
 
-/* CARDS — square + pop */
+/* CARD — square + pop */
 .card{
   background: var(--ink);
   border: 1px solid var(--line);
@@ -133,10 +137,15 @@ a:hover{ color: var(--accent-2) }
 .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)) }
 @media (max-width: 880px){ .grid-2, .grid-3{ grid-template-columns: 1fr } }
 
-/* ===== ICON-ONLY LINK GRID (bigger + perfectly centered) ===== */
+/* GALLERY */
+.gallery img{
+  width:100%; display:block; border-radius:2px; border:1px solid var(--line);
+}
+
+/* ==== ICON-ONLY LINK GRID (BIGGER + CENTERED) ==== */
 .icon-grid{
   display:grid;
-  grid-template-columns: repeat(6,84px); /* larger buttons */
+  grid-template-columns: repeat(6,84px);
   gap:18px;
   justify-content:center;
 }
@@ -150,17 +159,15 @@ a:hover{ color: var(--accent-2) }
   background:#0e1440;
   border:1px solid var(--line);
   border-radius:4px;
-  font-size:0; line-height:0;          /* kills any stray text baseline */
+  font-size:0; line-height:0;          /* hides any stray text baseline */
 }
 .icon-btn img, .icon-btn svg{
-  width:60px; height:60px;             /* fills the square nicely */
-  display:block;                        /* centers perfectly */
+  width:60px; height:60px; display:block;
   image-rendering: pixelated;
   filter: var(--icon-filter);
 }
 .icon-btn:hover{
-  outline:2px solid var(--accent-2); outline-offset:-2px;
-  box-shadow: 0 0 22px var(--glow-2);
+  box-shadow: 0 0 0 2px var(--accent-2) inset, 0 0 22px var(--glow-2);
 }
 .icon-btn:hover img, .icon-btn:hover svg{ filter: var(--icon-filter-hover); }
 
@@ -184,7 +191,7 @@ a:hover{ color: var(--accent-2) }
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
 }
-.listen a:hover{ outline:2px solid var(--accent); outline-offset:-2px }
+.listen a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
 
 /* OPTIONAL Featured song (index.html) */
 .featured-song{
@@ -200,7 +207,7 @@ a:hover{ color: var(--accent-2) }
   padding:8px 10px; border:1px solid var(--line); border-radius:4px;
   font-family:'Press Start 2P'; font-size:10px; background:#121536;
 }
-.featured-song .cta a:hover{ outline:2px solid var(--accent); outline-offset:-2px }
+.featured-song .cta a:hover{ box-shadow: 0 0 0 2px var(--accent) inset; }
 
 /* AUDIO */
 audio{
