@@ -11,38 +11,43 @@
 
   <!-- Scoped tweaks for promo thumbs (no changes to style.css required) -->
   <style>
-    .promo { max-width: 720px; margin: 20px auto 0; display: grid; gap: 22px; }
-    .promo-card { position: relative; display: block; text-decoration: none; border-radius: 6px; overflow: hidden; }
+    .promo{
+      max-width: clamp(420px, 70vw, 640px);
+      margin: 12px auto 0;
+      display: grid;
+      gap: 16px;
+    }
+    .promo-card{ position: relative; display: block; text-decoration: none; border-radius: 6px; overflow: hidden; }
     .promo-card img{
       width: 100%; display: block; border-radius: 6px;
-      /* both 16:9, Spotify will crop nicely */
-      aspect-ratio: 16 / 9; object-fit: cover;
-      /* undo global pixelation just for these */
-      image-rendering: auto !important;
+      aspect-ratio: 16 / 9; object-fit: cover;        /* both 16:9 */
+      image-rendering: auto !important;               /* undo global pixelation just for these */
       box-shadow: 0 0 14px rgba(0,0,0,.35), 0 0 16px var(--glow);
       background:#0e1440;
     }
     /* Glass caption attached to the bottom of the image */
     .promo-caption{
       position: absolute; left: 0; right: 0; bottom: 0;
-      padding: 10px 12px;
+      padding: 12px 14px;
+      display: flex; align-items: center; gap: 10px;  /* for icon */
       font-family: 'VT323', monospace;
-      font-size: 18px; line-height: 1.1; letter-spacing: .4px;
+      font-size: 22px; line-height: 1.1; letter-spacing: .4px;
       color: var(--fg);
       background: linear-gradient(to top, rgba(10,14,40,.72), rgba(10,14,40,.38));
       backdrop-filter: blur(6px);
       border-top: 0px solid rgba(99,228,255,.25);
       text-shadow: 0 0 6px rgba(99,228,255,.35);
     }
-    .promo-caption .sub{
-      opacity:.9; font-size:16px;
+    .promo-caption .sub{ opacity:.95; font-size: 20px; }
+    .promo-icon{
+      width: 18px; height: 18px; flex: 0 0 18px;
+      image-rendering: auto; display:inline-block;
+      filter: var(--icon-filter);
     }
-    /* Optional tiny platform pill on the right */
-    .promo-badge{
-      position:absolute; right:10px; bottom:10px;
-      padding: 4px 8px; border:1px solid var(--line); border-radius: 999px;
-      font-family: 'Press Start 2P', cursive; font-size:10px;
-      background:#0e1440; box-shadow: 0 0 12px rgba(0,0,0,.3), 0 0 14px var(--glow);
+    @media (max-width: 560px){
+      .promo{ gap: 14px; }
+      .promo-caption{ font-size: 20px; }
+      .promo-caption .sub{ font-size: 18px; }
     }
   </style>
 </head>
@@ -91,9 +96,9 @@
           src="assets/img/art-lankwaifong.jpg"
           alt="Lan Kwai Fong — cover art (Spotify)">
         <div class="promo-caption">
-          Lan Kwai Fong <span class="sub">| Spotify</span>
+          <span>Lan Kwai Fong <span class="sub">| Spotify</span></span>
+          <img class="promo-icon" src="assets/icons/spotify.svg" alt="">
         </div>
-        <div class="promo-badge">Spotify</div>
       </a>
 
       <!-- YouTube -->
@@ -107,9 +112,9 @@
           sizes="(min-width: 720px) 720px, 100vw"
           alt="Lan Kwai Fong — music video thumbnail (YouTube)">
         <div class="promo-caption">
-          Lan Kwai Fong <span class="sub">| Music Video</span>
+          <span>Lan Kwai Fong <span class="sub">| Music Video</span></span>
+          <img class="promo-icon" src="assets/icons/youtube.svg" alt="">
         </div>
-        <div class="promo-badge">YouTube</div>
       </a>
     </section>
 
@@ -119,3 +124,4 @@
   <script src="js/main.js" defer></script>
 </body>
 </html>
+
