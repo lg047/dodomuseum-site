@@ -1,4 +1,4 @@
-/* === Dodo Museum — Neon Flat v3.2 (square Y2K, punchy) === */
+/* === Dodo Museum — Neon Flat v3.4 (square Y2K, punchy, body font fix) === */
 
 /* FONTS */
 @font-face{
@@ -185,7 +185,7 @@ a:hover{ color: var(--accent-2); }
   font-size:14px; letter-spacing:1px; color: var(--fg);
   text-shadow: 0 0 6px rgba(0,0,0,.6);
 }
-.song p{ margin:0 0 10px 0; color: var(--muted); font-size: 20px }
+.song p{ margin:0 0 10px 0; color: var(--muted); }
 .song .listen{ display:flex; gap:8px; flex-wrap: wrap }
 .listen a{
   padding:6px 8px; border:1px solid var(--line); border-radius:4px;
@@ -216,7 +216,6 @@ body, p, .song p, .featured-song p, .about p {
   line-height: 1.4;
 }
 
-
 /* AUDIO */
 audio{
   width:100%;
@@ -227,9 +226,6 @@ audio{
 /* TYPE */
 h1,h2,h3{ line-height: 1.25 }
 small,.muted{ color: var(--muted) }
-
-/* FOOTER */
-.footer{ text-align:center; color: var(--muted); padding: 18px 0; font-size: 18px }
 
 /* MOBILE */
 @media (max-width: 560px){
