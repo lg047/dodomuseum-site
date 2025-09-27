@@ -46,7 +46,7 @@ body:before{
 }
 
 .wrapper {
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 20px 18px 28px;
 }
@@ -114,12 +114,13 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 /* CARD */
 .card{
   background: var(--ink);
-  border: 1px solid var(--line);
+  border: 0px solid var(--line);
   border-radius: 2px;
   padding: 16px;
   box-shadow:
     0 2px 0 rgba(0,0,0,.6) inset,
     0 0 4px rgba(0,0,0,.4)
+    0 0 14px var(--glow-2);
   position: relative;
 }
 .card:before{
