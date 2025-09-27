@@ -1,20 +1,7 @@
-/* === Dodo Museum — Neon Flat v3.6 (VT323 locked, extra glow) === */
+/* === Dodo Museum — Neon Flat v3.7 (VT323 fixed, Google Fonts, extra glow) === */
 
-/* FONTS */
-@font-face{
-  font-family: 'Press Start 2P';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2') format('woff2');
-  font-display: swap;
-}
-@font-face{
-  font-family: 'VT323';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJA.woff2') format('woff2');
-  font-display: swap;
-}
+/* GOOGLE FONTS (reliable load) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 /* PALETTE + GLOW */
 :root{
@@ -25,10 +12,8 @@
   --accent: #63E4FF;
   --accent-2: #FF6EDC;
   
-  --glow: rgba(99,228,255,.55);   /* old was .55 */
-  --glow-2: rgba(255,110,220,.45); /* old was .45 */
-}
-
+  --glow: rgba(99,228,255,.55);
+  --glow-2: rgba(255,110,220,.45);
 
   --icon-filter: invert(86%) sepia(14%) saturate(1232%) hue-rotate(168deg) brightness(105%) contrast(104%);
   --icon-filter-hover: invert(91%) sepia(23%) saturate(5284%) hue-rotate(289deg) brightness(103%) contrast(102%);
@@ -244,7 +229,7 @@ p, li, ul, ol, blockquote, .card, .song p, .featured-song p, .about p {
   font-size: 14px;
   line-height: 1.4;
   color: var(--fg);
-  text-shadow: 0 0 6px rgba(99,228,255,.25); /* subtle readable glow */
+  text-shadow: 0 0 6px rgba(99,228,255,.25);
 }
 
 /* AUDIO */
@@ -265,3 +250,4 @@ small,.muted{ color: var(--muted) }
   .song{ grid-template-columns: 96px 1fr }
   .song img.art{ width:96px; height:96px }
 }
+
