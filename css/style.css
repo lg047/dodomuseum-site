@@ -142,6 +142,19 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 @media (max-width: 760px){ .icon-grid{ grid-template-columns: repeat(4,84px) } }
 @media (max-width: 560px){ .icon-grid{ grid-template-columns: repeat(3,84px) } }
 
+/* GALLERY */
+.gallery img{
+  width:100%;
+  height:auto;
+  display:block;
+  /* optional tidy bits, same spirit as before */
+  border-radius:0;
+  border:0;
+  image-rendering:auto;
+  box-shadow: 0 0 0 rgba(0,0,0,.35), 0 0 0 var(--glow);
+}
+
+
 /* Icon buttons now backgroundless */
 .icon-btn{
   width:84px; height:84px; padding:0;
