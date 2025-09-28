@@ -9,7 +9,7 @@
   <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Scoped tweaks for promo thumbs (no changes to style.css required) -->
+  <!-- Promo thumbnail overrides (scoped, no edits to styles.css) -->
   <style>
     .promo{
       max-width: clamp(420px, 68vw, 640px);
@@ -18,6 +18,7 @@
       gap: 14px;
     }
 
+    /* Card carries the glow */
     .promo-card{
       position: relative;
       display: block;
@@ -25,25 +26,14 @@
       border-radius: 8px;
       overflow: hidden;
       isolation: isolate;
-    }
-
-    /* Image + card glow */
-    .promo-card img{
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      image-rendering: auto !important;
       box-shadow:
         0 0 18px rgba(0,0,0,.55),
         0 0 28px var(--glow),
         0 0 40px var(--glow-2),
         0 0 60px var(--glow);
-      background:#0e1440;
       transition: box-shadow .15s ease, transform .15s ease;
     }
-    .promo-card:hover img{
+    .promo-card:hover{
       box-shadow:
         0 0 20px rgba(0,0,0,.6),
         0 0 36px var(--glow),
@@ -52,14 +42,24 @@
       transform: translateY(-1px);
     }
 
-    /* Nudge Spotify art up a touch */
-    .promo-img--spotify{ object-position: 50% 60%; }
+    /* Image itself stays clean, no shadow */
+    .promo-card img{
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      image-rendering: auto !important;
+      box-shadow: none;
+      background:#0e1440;
+    }
+    .promo-img--spotify{ object-position: 50% 60%; } /* nudge up */
 
-    /* Slimmer glass overlay (24% instead of 30%) */
+    /* Frosted overlay — adjust height to control band */
     .promo-card::after{
       content:"";
       position:absolute; left:0; right:0; bottom:0;
-      height:24%;
+      height: 22%; /* <- change this % to shrink/expand the frosted band */
       background: linear-gradient(to top, rgba(10,14,40,.68), rgba(10,14,40,.30));
       backdrop-filter: blur(6px);
       z-index: 1;
@@ -72,7 +72,6 @@
       padding: 10px 14px;
       display: flex; align-items: center; gap: 10px;
       font-family: 'VT323', monospace;
-      /* slightly bigger than before, but controlled */
       font-size: clamp(22px, 4.0vw, 32px);
       line-height: 1.1; letter-spacing: .4px;
       color: var(--fg);
@@ -93,9 +92,9 @@
       display:inline-block;
       object-fit: contain;
       image-rendering: auto;
-      filter: none;           /* remove green glow */
-      box-shadow: none;       /* no icon shadow */
-      translate: 0 1px;       /* baseline align */
+      filter: none;
+      box-shadow: none;
+      translate: 0 1px;
     }
 
     @media (max-width: 560px){
@@ -141,7 +140,7 @@
       </a>
     </section>
 
-    <!-- Vertically stacked promo thumbnails -->
+    <!-- Promo thumbnails -->
     <section class="promo" aria-label="Current releases">
       <!-- Spotify -->
       <a class="promo-card" href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=5d26cf49ba2f43b7" target="_blank" rel="noopener" aria-label="Lan Kwai Fong on Spotify">
