@@ -24,76 +24,78 @@
       text-decoration: none;
       border-radius: 8px;
       overflow: hidden;
-      isolation: isolate; /* keep overlay + caption contained */
+      isolation: isolate;
     }
 
-    /* Image */
+    /* Image + card glow */
     .promo-card img{
       width: 100%;
       display: block;
       border-radius: 8px;
       aspect-ratio: 16 / 9;
       object-fit: cover;
-      image-rendering: auto !important; /* undo global pixelation for these */
+      image-rendering: auto !important;
       box-shadow:
         0 0 18px rgba(0,0,0,.55),
-        0 0 26px var(--glow),
-        0 0 34px var(--glow-2),
-        0 0 48px var(--glow);
+        0 0 28px var(--glow),
+        0 0 40px var(--glow-2),
+        0 0 60px var(--glow);
       background:#0e1440;
       transition: box-shadow .15s ease, transform .15s ease;
     }
     .promo-card:hover img{
       box-shadow:
         0 0 20px rgba(0,0,0,.6),
-        0 0 32px var(--glow),
-        0 0 42px var(--glow-2),
-        0 0 64px var(--glow);
+        0 0 36px var(--glow),
+        0 0 50px var(--glow-2),
+        0 0 78px var(--glow);
       transform: translateY(-1px);
     }
+
     /* Nudge Spotify art up a touch */
     .promo-img--spotify{ object-position: 50% 60%; }
 
-    /* 30% glass overlay lives on the card (not the caption) */
+    /* Slimmer glass overlay (24% instead of 30%) */
     .promo-card::after{
       content:"";
       position:absolute; left:0; right:0; bottom:0;
-      height:30%;
-      background: linear-gradient(to top, rgba(10,14,40,.75), rgba(10,14,40,.4));
+      height:24%;
+      background: linear-gradient(to top, rgba(10,14,40,.68), rgba(10,14,40,.30));
       backdrop-filter: blur(6px);
-      border-top: 0 solid rgba(99,228,255,.25);
       z-index: 1;
       pointer-events:none;
     }
 
-    /* Caption sits over the overlay, compact and single line */
+    /* Caption sits over the overlay */
     .promo-caption{
       position: absolute; left: 0; right: 0; bottom: 0;
       padding: 10px 14px;
       display: flex; align-items: center; gap: 10px;
       font-family: 'VT323', monospace;
-      font-size: clamp(20px, 3.8vw, 30px);  /* big but controlled */
+      /* slightly bigger than before, but controlled */
+      font-size: clamp(22px, 4.0vw, 32px);
       line-height: 1.1; letter-spacing: .4px;
       color: var(--fg);
       text-shadow: 0 0 6px rgba(99,228,255,.35);
-      white-space: nowrap;                /* prevent weird multi-line stack */
+      white-space: nowrap;
       overflow: hidden; text-overflow: ellipsis;
       z-index: 2;
     }
     .promo-caption .sub{
       opacity:.95;
-      font-size: clamp(18px, 3.2vw, 26px);
+      font-size: clamp(20px, 3.4vw, 28px);
     }
 
-    /* Small, fixed-size icons that never warp */
+    /* Icons: fixed-size, no glow */
     .promo-icon{
-      width: 22px; height: 22px;
+      width: 20px; height: 20px;
+      flex: 0 0 20px;
       display:inline-block;
-      flex: 0 0 22px;
       object-fit: contain;
       image-rendering: auto;
-      filter: var(--icon-filter);
-      translate: 0 1px; /* optical align with text baseline */
+      filter: none;           /* remove green glow */
+      box-shadow: none;       /* no icon shadow */
+      translate: 0 1px;       /* baseline align */
     }
 
     @media (max-width: 560px){
@@ -139,7 +141,7 @@
       </a>
     </section>
 
-    <!-- Vertically stacked promo thumbnails with corrected glass captions -->
+    <!-- Vertically stacked promo thumbnails -->
     <section class="promo" aria-label="Current releases">
       <!-- Spotify -->
       <a class="promo-card" href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=5d26cf49ba2f43b7" target="_blank" rel="noopener" aria-label="Lan Kwai Fong on Spotify">
