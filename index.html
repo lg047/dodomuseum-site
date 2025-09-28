@@ -12,25 +12,36 @@
   <!-- Scoped tweaks for promo thumbs (no changes to style.css required) -->
   <style>
     .promo{
-      max-width: clamp(420px, 70vw, 640px);
+      max-width: clamp(420px, 68vw, 640px);
       margin: 12px auto 0;
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
-    .promo-card{ position: relative; display: block; text-decoration: none; border-radius: 6px; overflow: hidden; }
 
+    .promo-card{
+      position: relative;
+      display: block;
+      text-decoration: none;
+      border-radius: 8px;
+      overflow: hidden;
+      isolation: isolate; /* keep overlay + caption contained */
+    }
+
+    /* Image */
     .promo-card img{
-      width: 100%; display: block; border-radius: 6px;
-      aspect-ratio: 16 / 9; object-fit: cover;        /* both 16:9 */
-      image-rendering: auto !important;               /* undo global pixelation just for these */
-      /* beefier glow to separate from bg */
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      image-rendering: auto !important; /* undo global pixelation for these */
       box-shadow:
         0 0 18px rgba(0,0,0,.55),
         0 0 26px var(--glow),
         0 0 34px var(--glow-2),
         0 0 48px var(--glow);
       background:#0e1440;
-      transition: box-shadow .15s ease;
+      transition: box-shadow .15s ease, transform .15s ease;
     }
     .promo-card:hover img{
       box-shadow:
@@ -38,34 +49,56 @@
         0 0 32px var(--glow),
         0 0 42px var(--glow-2),
         0 0 64px var(--glow);
+      transform: translateY(-1px);
     }
-    /* Nudge Spotify art up to show a bit more foreground */
+    /* Nudge Spotify art up a touch */
     .promo-img--spotify{ object-position: 50% 60%; }
 
-    /* Glass caption attached to the bottom; ~30% of thumbnail height */
+    /* 30% glass overlay lives on the card (not the caption) */
+    .promo-card::after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:0;
+      height:30%;
+      background: linear-gradient(to top, rgba(10,14,40,.75), rgba(10,14,40,.4));
+      backdrop-filter: blur(6px);
+      border-top: 0 solid rgba(99,228,255,.25);
+      z-index: 1;
+      pointer-events:none;
+    }
+
+    /* Caption sits over the overlay, compact and single line */
     .promo-caption{
       position: absolute; left: 0; right: 0; bottom: 0;
-      min-height: 30%;
-      padding: 12px 14px;
-      display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
       font-family: 'VT323', monospace;
-      font-size: clamp(22px, 4.5vw, 36px);  /* big title */
+      font-size: clamp(20px, 3.8vw, 30px);  /* big but controlled */
       line-height: 1.1; letter-spacing: .4px;
       color: var(--fg);
-      background: linear-gradient(to top, rgba(10,14,40,.72), rgba(10,14,40,.38));
-      backdrop-filter: blur(6px);
-      border-top: 0px solid rgba(99,228,255,.25);
       text-shadow: 0 0 6px rgba(99,228,255,.35);
+      white-space: nowrap;                /* prevent weird multi-line stack */
+      overflow: hidden; text-overflow: ellipsis;
+      z-index: 2;
     }
-    .promo-caption .sub{ opacity:.95; font-size: clamp(18px, 3.6vw, 28px); }
+    .promo-caption .sub{
+      opacity:.95;
+      font-size: clamp(18px, 3.2vw, 26px);
+    }
+
+    /* Small, fixed-size icons that never warp */
     .promo-icon{
-      width: clamp(18px, 3.2vw, 26px); height: clamp(18px, 3.2vw, 26px); flex: 0 0 auto;
-      image-rendering: auto; display:inline-block;
+      width: 22px; height: 22px;
+      display:inline-block;
+      flex: 0 0 22px;
+      object-fit: contain;
+      image-rendering: auto;
       filter: var(--icon-filter);
+      translate: 0 1px; /* optical align with text baseline */
     }
 
     @media (max-width: 560px){
-      .promo{ gap: 14px; }
+      .promo{ gap: 12px; }
+      .promo-caption{ padding: 9px 12px; }
     }
   </style>
 </head>
@@ -106,7 +139,7 @@
       </a>
     </section>
 
-    <!-- Vertically stacked promo thumbnails with glass captions -->
+    <!-- Vertically stacked promo thumbnails with corrected glass captions -->
     <section class="promo" aria-label="Current releases">
       <!-- Spotify -->
       <a class="promo-card" href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=5d26cf49ba2f43b7" target="_blank" rel="noopener" aria-label="Lan Kwai Fong on Spotify">
@@ -143,4 +176,3 @@
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
