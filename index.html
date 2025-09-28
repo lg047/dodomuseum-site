@@ -11,11 +11,16 @@
 
   <!-- Promo thumbnail overrides (scoped, no edits to styles.css) -->
   <style>
+
     .promo{
-      max-width: clamp(420px, 68vw, 640px);
+      max-width: 1180px;
       margin: 12px auto 0;
       display: grid;
-      gap: 14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 720px){
+      .promo{ grid-template-columns: 1fr; }
     }
 
     /* Card carries the glow */
