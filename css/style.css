@@ -64,10 +64,6 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
     0 0 36px var(--glow-2);
   display:flex; align-items:center; justify-content:center; gap:12px; text-align:center;
 }
-.header .logo{
-  width: 60px; height: 60px; image-rendering: pixelated;
-  filter: drop-shadow(0 0 12px var(--glow)) drop-shadow(0 0 16px var(--glow-2));
-}
 .brand{
   margin:0; font-family:'Press Start 2P', cursive;
   font-size: 24px; letter-spacing: 1.8px; text-transform: lowercase;
@@ -75,6 +71,17 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   text-shadow: 0 0 12px var(--glow), 0 0 22px var(--glow-2), 0 0 32px var(--glow);
 }
 
+/* Smaller social icons inside header only */
+.header-icons .icon-btn {
+  width: 40px;
+  height: 40px;
+}
+.header-icons .brand-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* NAV */
 .nav{
   margin: 20px 0;
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
@@ -147,13 +154,11 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   width:100%;
   height:auto;
   display:block;
-  /* optional tidy bits, same spirit as before */
   border-radius:0;
   border:0;
   image-rendering:auto;
   box-shadow: 0 0 0 rgba(0,0,0,.35), 0 0 0 var(--glow);
 }
-
 
 /* Icon buttons now backgroundless */
 .icon-btn{
@@ -177,7 +182,6 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 .bi-instagram { -webkit-mask-image: url('../assets/icons/instagram.svg'); mask-image: url('../assets/icons/instagram.svg'); }
 .bi-tiktok    { -webkit-mask-image: url('../assets/icons/tiktok.svg');    mask-image: url('../assets/icons/tiktok.svg'); }
 .bi-bandcamp  { -webkit-mask-image: url('../assets/icons/bandcamp.svg');  mask-image: url('../assets/icons/bandcamp.svg'); }
-
 
 /* SONG BLOCKS */
 .song{
@@ -208,3 +212,4 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 }
 .featured-song .thumb{
   width:160px
+}
