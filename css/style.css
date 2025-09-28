@@ -147,7 +147,9 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   grid-template-columns: repeat(6,84px);
   gap:18px;
   justify-content:center;
+  margin: 20px 0;  /* <-- add this line */
 }
+
 @media (max-width: 960px){ .icon-grid{ grid-template-columns: repeat(5,84px) } }
 @media (max-width: 760px){ .icon-grid{ grid-template-columns: repeat(4,84px) } }
 @media (max-width: 560px){ .icon-grid{ grid-template-columns: repeat(3,84px) } }
