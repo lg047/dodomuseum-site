@@ -59,7 +59,7 @@
     .promo-card::after{
       content:"";
       position:absolute; left:0; right:0; bottom:0;
-      height: 22%; /* <- change this % to shrink/expand the frosted band */
+      height: 22%; /* <- adjust % to shrink/expand the frosted band */
       background: linear-gradient(to top, rgba(10,14,40,.68), rgba(10,14,40,.30));
       backdrop-filter: blur(6px);
       z-index: 1;
@@ -85,17 +85,16 @@
       font-size: clamp(20px, 3.4vw, 28px);
     }
 
-    /* Icons: fixed-size, no glow */
+    /* Masked promo icons (always white, no background) */
     .promo-icon{
-      width: 20px; height: 20px;
-      flex: 0 0 20px;
-      display:inline-block;
-      object-fit: contain;
-      image-rendering: auto;
-      filter: none;
-      box-shadow: none;
-      translate: 0 1px;
+      width: 22px; height: 22px;
+      flex: 0 0 22px;
+      background-color: var(--fg);
+      -webkit-mask: no-repeat center / contain;
+              mask: no-repeat center / contain;
     }
+    .promo-icon.spotify { -webkit-mask-image: url('assets/icons/spotify.svg'); mask-image: url('assets/icons/spotify.svg'); }
+    .promo-icon.youtube { -webkit-mask-image: url('assets/icons/youtube.svg'); mask-image: url('assets/icons/youtube.svg'); }
 
     @media (max-width: 560px){
       .promo{ gap: 12px; }
@@ -120,23 +119,23 @@
 
     <!-- Social icons -->
     <section class="grid icon-grid" aria-label="Follow Dodo Museum">
-      <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" aria-label="Spotify" target="_blank" rel="noopener">
-        <img src="assets/icons/spotify.svg" alt="">
+      <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" target="_blank" rel="noopener" aria-label="Spotify">
+        <span class="brand-icon bi-spotify"></span>
       </a>
-      <a class="icon-btn" href="https://music.apple.com/artist/YOUR_APPLE_ID" aria-label="Apple Music" target="_blank" rel="noopener">
-        <img src="assets/icons/apple-music.svg" alt="">
+      <a class="icon-btn" href="https://music.apple.com/artist/YOUR_APPLE_ID" target="_blank" rel="noopener" aria-label="Apple Music">
+        <span class="brand-icon bi-apple"></span>
       </a>
-      <a class="icon-btn" href="https://www.youtube.com/@YOUR_CHANNEL" aria-label="YouTube" target="_blank" rel="noopener">
-        <img src="assets/icons/youtube.svg" alt="">
+      <a class="icon-btn" href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener" aria-label="YouTube">
+        <span class="brand-icon bi-youtube"></span>
       </a>
-      <a class="icon-btn" href="https://instagram.com/YOUR_HANDLE" aria-label="Instagram" target="_blank" rel="noopener">
-        <img src="assets/icons/instagram.svg" alt="">
+      <a class="icon-btn" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="brand-icon bi-instagram"></span>
       </a>
-      <a class="icon-btn" href="https://www.tiktok.com/@YOUR_HANDLE" aria-label="TikTok" target="_blank" rel="noopener">
-        <img src="assets/icons/tiktok.svg" alt="">
+      <a class="icon-btn" href="https://www.tiktok.com/@YOUR_HANDLE" target="_blank" rel="noopener" aria-label="TikTok">
+        <span class="brand-icon bi-tiktok"></span>
       </a>
-      <a class="icon-btn" href="https://dodomuseum.bandcamp.com/" aria-label="Bandcamp" target="_blank" rel="noopener">
-        <img src="assets/icons/bandcamp.svg" alt="">
+      <a class="icon-btn" href="https://dodomuseum.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp">
+        <span class="brand-icon bi-bandcamp"></span>
       </a>
     </section>
 
@@ -150,7 +149,7 @@
           alt="Lan Kwai Fong — cover art (Spotify)">
         <div class="promo-caption">
           <span>Lan Kwai Fong <span class="sub">| Spotify</span></span>
-          <img class="promo-icon" src="assets/icons/spotify.svg" alt="">
+          <span class="promo-icon spotify" aria-hidden="true"></span>
         </div>
       </a>
 
@@ -166,7 +165,7 @@
           alt="Lan Kwai Fong — music video thumbnail (YouTube)">
         <div class="promo-caption">
           <span>Lan Kwai Fong <span class="sub">| Music Video</span></span>
-          <img class="promo-icon" src="assets/icons/youtube.svg" alt="">
+          <span class="promo-icon youtube" aria-hidden="true"></span>
         </div>
       </a>
     </section>
@@ -177,3 +176,4 @@
   <script src="js/main.js" defer></script>
 </body>
 </html>
+
