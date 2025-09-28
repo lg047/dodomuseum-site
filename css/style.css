@@ -157,12 +157,14 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   -webkit-mask: no-repeat center / contain;
           mask: no-repeat center / contain;
 }
-.bi-spotify   { -webkit-mask-image: url('assets/icons/spotify.svg');   mask-image: url('assets/icons/spotify.svg'); }
-.bi-apple     { -webkit-mask-image: url('assets/icons/apple-music.svg'); mask-image: url('assets/icons/apple-music.svg'); }
-.bi-youtube   { -webkit-mask-image: url('assets/icons/youtube.svg');   mask-image: url('assets/icons/youtube.svg'); }
-.bi-instagram { -webkit-mask-image: url('assets/icons/instagram.svg'); mask-image: url('assets/icons/instagram.svg'); }
-.bi-tiktok    { -webkit-mask-image: url('assets/icons/tiktok.svg');    mask-image: url('assets/icons/tiktok.svg'); }
-.bi-bandcamp  { -webkit-mask-image: url('assets/icons/bandcamp.svg');  mask-image: url('assets/icons/bandcamp.svg'); }
+
+.bi-spotify   { -webkit-mask-image: url('../assets/icons/spotify.svg');   mask-image: url('../assets/icons/spotify.svg'); }
+.bi-apple     { -webkit-mask-image: url('../assets/icons/apple-music.svg'); mask-image: url('../assets/icons/apple-music.svg'); }
+.bi-youtube   { -webkit-mask-image: url('../assets/icons/youtube.svg');   mask-image: url('../assets/icons/youtube.svg'); }
+.bi-instagram { -webkit-mask-image: url('../assets/icons/instagram.svg'); mask-image: url('../assets/icons/instagram.svg'); }
+.bi-tiktok    { -webkit-mask-image: url('../assets/icons/tiktok.svg');    mask-image: url('../assets/icons/tiktok.svg'); }
+.bi-bandcamp  { -webkit-mask-image: url('../assets/icons/bandcamp.svg');  mask-image: url('../assets/icons/bandcamp.svg'); }
+
 
 /* SONG BLOCKS */
 .song{
