@@ -54,7 +54,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 /* HEADER + NAV */
 .header {
   margin: 8px 0 0;
-  padding: 14px 14px 10px;
+  padding: 14px 24px 10px; /* <-- wider horizontal padding */
   background: rgba(11,15,42,.9);
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -64,14 +64,15 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
     0 0 36px var(--glow-2);
   display:flex; 
   align-items:center; 
-  justify-content:space-between; /* <-- left/right split */
+  justify-content:space-between; /* brand left, icons right */
 }
 
-/* tighter spacing for the icon row */
 .header-icons {
   display:flex;
-  gap: 8px; /* was 12px, reduce spacing */
+  gap: 6px;           /* tighter spacing */
+  margin-left: auto;  /* pushes icons all the way right */
 }
+
 
 
 .brand{
