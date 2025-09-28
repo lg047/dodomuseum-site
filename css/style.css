@@ -52,7 +52,7 @@ a{ color: var(--accent); text-decoration: none; text-shadow: 0 0 6px rgba(99,228
 a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
 
 /* HEADER + NAV */
-.header{
+.header {
   margin: 8px 0 0;
   padding: 14px 14px 10px;
   background: rgba(11,15,42,.9);
@@ -62,8 +62,18 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
     0 0 28px rgba(0,0,0,.55),
     0 0 28px var(--glow),
     0 0 36px var(--glow-2);
-  display:flex; align-items:center; justify-content:center; gap:12px; text-align:center;
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; /* <-- left/right split */
 }
+
+/* tighter spacing for the icon row */
+.header-icons {
+  display:flex;
+  gap: 8px; /* was 12px, reduce spacing */
+}
+
+
 .brand{
   margin:0; font-family:'Press Start 2P', cursive;
   font-size: 24px; letter-spacing: 1.8px; text-transform: lowercase;
