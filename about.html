@@ -12,9 +12,17 @@
   <div class="wrapper">
 
     <header class="header">
+      <!-- LEFT: Nav -->
+      <nav class="header-nav" aria-label="Primary">
+        <a href="index.html">links</a>
+        <a href="songs.html">songs</a>
+        <a class="active" href="about.html">about</a>
+      </nav>
+
+      <!-- CENTER: Brand -->
       <div class="brand">dodo museum</div>
-    
-      <!-- Social icons inline with title -->
+
+      <!-- RIGHT: Social icons -->
       <section class="header-icons" aria-label="Follow Dodo Museum">
         <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" target="_blank" rel="noopener">
           <div class="brand-icon bi-spotify"></div>
@@ -36,13 +44,8 @@
         </a>
       </section>
     </header>
-    
 
-    <nav class="nav">
-      <a href="index.html">links</a>
-      <a href="songs.html">songs</a>
-      <a href="about.html">about</a>
-    </nav>
+    <!-- (Old standalone nav removed) -->
 
     <section class="hero card">
       <h1>about</h1>
@@ -50,15 +53,14 @@
     </section>
 
     <section class="grid" style="margin-top:16px">
-    <article class="card">
-      <p style="margin:0">
-        Dodo Museum started in 2023 as late-night sketches and voice notes shared between London and Hong Kong.
-        We like hazy reverbs, whispered vocals and tiny sounds that feel like memory. On stage we keep things
-        fragile and close — just enough to float. If you’re here, thanks for listening and for keeping the pixels glowing.
-      </p>
-    </article>
-  </section>
-
+      <article class="card">
+        <p style="margin:0">
+          Dodo Museum started in 2023 as late-night sketches and voice notes shared between London and Hong Kong.
+          We like hazy reverbs, whispered vocals and tiny sounds that feel like memory. On stage we keep things
+          fragile and close — just enough to float. If you’re here, thanks for listening and for keeping the pixels glowing.
+        </p>
+      </article>
+    </section>
 
     <section class="grid grid-3 gallery" style="margin-top:16px">
       <img src="assets/img/BowenDriveBed_Cropped_VHS_PHOTO.webp" alt="Dodo Museum photo 1">
@@ -71,4 +73,3 @@
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
