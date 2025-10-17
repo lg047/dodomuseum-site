@@ -4,46 +4,115 @@
   <meta charset="utf-8">
   <title>Dodo Museum — Lan Kwai Fong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Dodo Museum — latest single 'Lan Kwai Fong'">
+  <meta name="description" content="Latest single — Lan Kwai Fong by Dodo Museum. Dreampop / shoegaze duo.">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Minimal custom layout for landing -->
+  <!-- Local style for the landing layout -->
   <style>
     .landing {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      justify-items: center;
       gap: 40px;
-      max-width: 1180px;
-      margin: 80px auto;
-      padding: 0 20px;
+      margin-top: 60px;
     }
-    @media (max-width: 760px) {
-      .landing { grid-template-columns: 1fr; text-align: center; gap: 28px; }
+    @media (max-width: 720px){
+      .landing {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+      }
     }
 
-    .landing-text {
-      font-family: 'VT323', monospace;
-      line-height: 1.4;
-    }
     .landing-text h2 {
-      margin: 0 0 4px 0;
-      font-size: 20px;
-      color: var(--muted);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin: 0 0 12px 0;
       text-transform: lowercase;
-      letter-spacing: .5px;
     }
     .landing-text h1 {
-      margin: 0 0 20px 0;
       font-family: 'Press Start 2P', monospace;
-      font-size: 28px;
-      color: var(--fg);
+      font-size: 24px;
+      margin: 0 0 18px 0;
       text-transform: lowercase;
-      letter-spacing: 1.2px;
     }
-    .landing-text p {
-      margin: 10px 0;
-      font-size: 16px;
-      color:
+    .landing-text a {
+      display: block;
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 6px;
+      text-decoration: none;
+    }
+    .landing-text a:hover { color: var(--accent-2); text-decoration: underline; }
+
+    .landing img {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border: none;
+      box-shadow: none;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <header class="header">
+      <!-- LEFT: Nav -->
+      <nav class="header-nav" aria-label="Primary">
+        <a class="active" href="index.html">links</a>
+        <a href="songs.html">songs</a>
+        <a href="about.html">about</a>
+      </nav>
+
+      <!-- CENTER: Brand -->
+      <div class="brand">dodo museum</div>
+
+      <!-- RIGHT: Social icons -->
+      <section class="header-icons" aria-label="Follow Dodo Museum">
+        <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" target="_blank" rel="noopener">
+          <div class="brand-icon bi-spotify"></div>
+        </a>
+        <a class="icon-btn" href="https://music.apple.com/artist/YOUR_APPLE_ID" target="_blank" rel="noopener">
+          <div class="brand-icon bi-apple"></div>
+        </a>
+        <a class="icon-btn" href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
+          <div class="brand-icon bi-youtube"></div>
+        </a>
+        <a class="icon-btn" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">
+          <div class="brand-icon bi-instagram"></div>
+        </a>
+        <a class="icon-btn" href="https://www.tiktok.com/@YOUR_HANDLE" target="_blank" rel="noopener">
+          <div class="brand-icon bi-tiktok"></div>
+        </a>
+        <a class="icon-btn" href="https://dodomuseum.bandcamp.com/" target="_blank" rel="noopener">
+          <div class="brand-icon bi-bandcamp"></div>
+        </a>
+      </section>
+    </header>
+
+    <!-- Landing layout -->
+    <section class="landing">
+      <div class="landing-text">
+        <h2>latest single</h2>
+        <h1>Lan Kwai Fong</h1>
+        <a href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=5d26cf49ba2f43b7" target="_blank" rel="noopener">listen on spotify</a>
+        <a href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener">watch the music video</a>
+      </div>
+
+      <img src="assets/img/art-lankwaifong.jpg" alt="Lan Kwai Fong cover art">
+    </section>
+
+    <footer class="footer" style="margin-top:60px">© Dodo Museum</footer>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
+
