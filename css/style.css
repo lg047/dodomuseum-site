@@ -1,4 +1,4 @@
-/* === Dodo Museum — Neon Flat v3.7 (VT323 fixed, Google Fonts, extra glow) === */
+/* === Dodo Museum — Neon Flat v3.8 (Header simplified, centered brand) === */
 
 /* GOOGLE FONTS (reliable load) */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
@@ -11,7 +11,7 @@
   --line: #2E3180;
   --accent: #63E4FF;
   --accent-2: #FF6EDC;
-  
+
   --glow: rgba(99,228,255,.55);
   --glow-2: rgba(255,110,220,.45);
 }
@@ -47,82 +47,132 @@ body:before{
   padding: 20px 18px 28px;
 }
 
-/* global link */
-a{ color: var(--accent); text-decoration: none; text-shadow: 0 0 6px rgba(99,228,255,.35); }
-a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
+/* global link — simplified (no glow) */
+a{
+  color: var(--accent);
+  text-decoration: none;
+  text-shadow: none;
+}
+a:hover{
+  color: var(--accent-2);
+  text-decoration: underline;
+}
 
-/* HEADER + NAV */
+/* ===== HEADER LAYOUT (nav ←  logo  → socials) — no boxes/borders/glow ===== */
 .header {
+  /* grid gives a natural center for the brand */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
   margin: 8px 0 0;
-  padding: 14px 24px 10px; /* <-- wider horizontal padding */
-  background: rgba(11,15,42,.9);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  box-shadow:
-    0 0 28px rgba(0,0,0,.55),
-    0 0 28px var(--glow),
-    0 0 36px var(--glow-2);
-  display:flex; 
-  align-items:center; 
-  justify-content:space-between; /* brand left, icons right */
+  padding: 12px 0;
+
+  /* strip the old chrome */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.header-icons {
-  display:flex;
-  gap: 6px;           /* tighter spacing */
-  margin-left: auto;  /* pushes icons all the way right */
-}
-
-
-
+/* Brand/logo centered */
 .brand{
-  margin:0; font-family:'Press Start 2P', cursive;
-  font-size: 24px; letter-spacing: 1.8px; text-transform: lowercase;
+  margin: 0;
+  justify-self: center;          /* sits in the middle column */
+  font-family:'Press Start 2P', cursive;
+  font-size: 24px;
+  letter-spacing: 1.8px;
+  text-transform: lowercase;
   color: var(--fg);
-  text-shadow: 0 0 12px var(--glow), 0 0 22px var(--glow-2), 0 0 32px var(--glow);
+  text-shadow: none;             /* remove glow */
 }
 
-/* Smaller social icons inside header only */
+/* NAV INSIDE HEADER (to the left of the logo) */
+.header-nav,
+.header .nav {                   /* support either .header-nav or .nav moved into .header */
+  justify-self: start;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 0;                     /* remove external spacing */
+}
+
+/* Nav links — remove boxes/borders/glow */
+.header-nav a,
+.header .nav a{
+  display: inline-block;
+  font-family:'Press Start 2P';
+  font-size: 12px;
+  padding: 6px 0;                /* minimal tappable area, no pill */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-decoration: none;
+}
+.header-nav a:hover,
+.header .nav a:hover{
+  text-decoration: underline;
+}
+.header-nav a.active,
+.header .nav a.active{
+  text-decoration: underline;
+}
+
+/* Social icons to the right of the logo */
+.header-icons {
+  justify-self: end;
+  display:flex;
+  gap: 10px;
+  margin: 0;                     /* no push-right hacks needed in grid */
+}
+
+/* Smaller social icons inside header only (no box) */
 .header-icons .icon-btn {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 .header-icons .brand-icon {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
 
-/* NAV */
+/* ===== OLD, GLOBAL NAV (if you keep a secondary nav elsewhere) ===== */
+/* Keep the old .nav style available but neutralize the “boxy” look globally.
+   If you ONLY use the header nav, you can delete this block. */
 .nav{
-  margin: 20px 0;
+  margin: 16px 0;
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
 }
 .nav a{
-  display:inline-block; font-family:'Press Start 2P'; font-size:12px;
-  padding:10px 14px; background:#0e1440; color:var(--fg);
-  border:1px solid var(--line); border-radius:4px;
-  box-shadow:
-    0 0 0 1px rgba(0,0,0,.5) inset,
-    0 0 12px rgba(0,0,0,.35),
-    0 0 14px var(--glow);
-  transition: transform .08s ease, box-shadow .12s ease;
+  display:inline-block;
+  font-family:'Press Start 2P';
+  font-size:12px;
+  padding:6px 0;
+  background: transparent;
+  color:var(--fg);
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  transition: transform .08s ease;
 }
 .nav a:hover{
-  box-shadow:
-    0 0 0 2px var(--accent-2) inset,
-    0 0 24px var(--glow-2),
-    0 0 24px var(--glow);
   transform: translateY(-1px);
+  text-decoration: underline;
 }
 .nav a.active{
-  box-shadow:
-    0 0 0 2px var(--accent) inset,
-    0 0 22px var(--glow),
-    0 0 22px var(--glow-2);
+  text-decoration: underline;
 }
 
 /* HERO — hidden */
 .hero{ display:none !important; }
+
+/* ===== Rest of site untouched for now ===== */
 
 /* CARD */
 .card{
@@ -171,7 +221,7 @@ a:hover{ color: var(--accent-2); text-shadow: 0 0 10px var(--glow-2); }
   box-shadow: 0 0 0 rgba(0,0,0,.35), 0 0 0 var(--glow);
 }
 
-/* Icon buttons now backgroundless */
+/* Icon buttons (site-wide default, already backgroundless) */
 .icon-btn{
   width:84px; height:84px; padding:0;
   display:flex; align-items:center; justify-content:center;
