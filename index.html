@@ -2,182 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dodo Museum — Links</title>
+  <title>Dodo Museum — Lan Kwai Fong</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Dodo Museum — dreampop / shoegaze. Listen and follow.">
+  <meta name="description" content="Dodo Museum — latest single 'Lan Kwai Fong'">
   <link rel="icon" href="favicon.ico">
-  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Promo thumbnail overrides (scoped, no edits to styles.css) -->
+  <!-- Minimal custom layout for landing -->
   <style>
-    .promo{
-      max-width: 1180px;
-      margin: 12px auto 0;
+    .landing {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      align-items: center;
+      justify-items: center;
+      gap: 40px;
+      max-width: 1180px;
+      margin: 80px auto;
+      padding: 0 20px;
     }
-    @media (max-width: 720px){
-      .promo{ grid-template-columns: 1fr; }
-    }
-
-    /* Card carries the glow */
-    .promo-card{
-      position: relative;
-      display: block;
-      text-decoration: none;
-      border-radius: 8px;
-      overflow: hidden;
-      isolation: isolate;
-      box-shadow:
-        0 0 18px rgba(0,0,0,.55),
-        0 0 28px var(--glow),
-        0 0 40px var(--glow-2),
-        0 0 60px var(--glow);
-      transition: box-shadow .15s ease, transform .15s ease;
-    }
-    .promo-card:hover{
-      box-shadow:
-        0 0 20px rgba(0,0,0,.6),
-        0 0 36px var(--glow),
-        0 0 50px var(--glow-2),
-        0 0 78px var(--glow);
-      transform: translateY(-1px);
+    @media (max-width: 760px) {
+      .landing { grid-template-columns: 1fr; text-align: center; gap: 28px; }
     }
 
-    /* Image itself stays clean, no shadow */
-    .promo-card img{
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      image-rendering: auto !important;
-      box-shadow: none;
-      background:#0e1440;
-    }
-    .promo-img--spotify{ object-position: 50% 60%; } /* nudge up */
-
-    /* Frosted overlay — adjust height to control band */
-    .promo-card::after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:0;
-      height: 22%;
-      background: linear-gradient(to top, rgba(10,14,40,.68), rgba(10,14,40,.30));
-      backdrop-filter: blur(6px);
-      z-index: 1;
-      pointer-events:none;
-    }
-
-    /* Caption sits over the overlay */
-    .promo-caption{
-      position: absolute; left: 0; right: 0; bottom: 0;
-      padding: 10px 14px;
-      display: flex; align-items: center; gap: 10px;
+    .landing-text {
       font-family: 'VT323', monospace;
-      font-size: clamp(22px, 4.0vw, 32px);
-      line-height: 1.1; letter-spacing: .4px;
+      line-height: 1.4;
+    }
+    .landing-text h2 {
+      margin: 0 0 4px 0;
+      font-size: 20px;
+      color: var(--muted);
+      text-transform: lowercase;
+      letter-spacing: .5px;
+    }
+    .landing-text h1 {
+      margin: 0 0 20px 0;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 28px;
       color: var(--fg);
-      text-shadow: 0 0 6px rgba(99,228,255,.35);
-      white-space: nowrap;
-      overflow: hidden; text-overflow: ellipsis;
-      z-index: 2;
+      text-transform: lowercase;
+      letter-spacing: 1.2px;
     }
-    .promo-caption .sub{
-      opacity:.95;
-      font-size: clamp(20px, 3.4vw, 28px);
-    }
-
-    /* Masked promo icons (always white, no background) */
-    .promo-icon{
-      width: 22px; height: 22px;
-      flex: 0 0 22px;
-      background-color: var(--fg);
-      -webkit-mask: no-repeat center / contain;
-              mask: no-repeat center / contain;
-      transform: translateY(2px);
-    }
-    .promo-icon.spotify { -webkit-mask-image: url('assets/icons/spotify.svg'); mask-image: url('assets/icons/spotify.svg'); }
-    .promo-icon.youtube { -webkit-mask-image: url('assets/icons/youtube.svg'); mask-image: url('assets/icons/youtube.svg'); }
-
-    @media (max-width: 560px){
-      .promo{ gap: 12px; }
-      .promo-caption{ padding: 9px 12px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <!-- Header -->
-    <header class="header">
-      <!-- LEFT: Nav -->
-      <nav class="header-nav" aria-label="Primary">
-        <a class="active" href="index.html">links</a>
-        <a href="songs.html">songs</a>
-        <a href="about.html">about</a>
-      </nav>
-
-      <!-- CENTER: Brand -->
-      <div class="brand">dodo museum</div>
-
-      <!-- RIGHT: Social icons -->
-      <section class="header-icons" aria-label="Follow Dodo Museum">
-        <a class="icon-btn" href="https://open.spotify.com/artist/YOUR_SPOTIFY_ARTIST_ID" target="_blank" rel="noopener">
-          <div class="brand-icon bi-spotify"></div>
-        </a>
-        <a class="icon-btn" href="https://music.apple.com/artist/YOUR_APPLE_ID" target="_blank" rel="noopener">
-          <div class="brand-icon bi-apple"></div>
-        </a>
-        <a class="icon-btn" href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
-          <div class="brand-icon bi-youtube"></div>
-        </a>
-        <a class="icon-btn" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">
-          <div class="brand-icon bi-instagram"></div>
-        </a>
-        <a class="icon-btn" href="https://www.tiktok.com/@YOUR_HANDLE" target="_blank" rel="noopener">
-          <div class="brand-icon bi-tiktok"></div>
-        </a>
-        <a class="icon-btn" href="https://dodomuseum.bandcamp.com/" target="_blank" rel="noopener">
-          <div class="brand-icon bi-bandcamp"></div>
-        </a>
-      </section>
-    </header>
-
-    <!-- Promo thumbnails -->
-    <section class="promo" aria-label="Current releases">
-      <!-- Spotify -->
-      <a class="promo-card" href="https://open.spotify.com/track/2QAbp7aFhdptMtF71gdWyA?si=5d26cf49ba2f43b7" target="_blank" rel="noopener" aria-label="Lan Kwai Fong on Spotify">
-        <img
-          class="promo-img--spotify"
-          src="assets/img/art-lankwaifong.jpg"
-          alt="Lan Kwai Fong — cover art (Spotify)">
-        <div class="promo-caption">
-          <span>Lan Kwai Fong <span class="sub">| Spotify</span></span>
-          <span class="promo-icon spotify" aria-hidden="true"></span>
-        </div>
-      </a>
-
-      <!-- YouTube -->
-      <a class="promo-card" href="https://youtu.be/2VeLFsVPUlA" target="_blank" rel="noopener" aria-label="Lan Kwai Fong music video on YouTube">
-        <img
-          src="https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg"
-          srcset="
-            https://img.youtube.com/vi/2VeLFsVPUlA/maxresdefault.jpg 1280w,
-            https://img.youtube.com/vi/2VeLFsVPUlA/sddefault.jpg 640w,
-            https://img.youtube.com/vi/2VeLFsVPUlA/hqdefault.jpg 480w"
-          sizes="(min-width: 720px) 720px, 100vw"
-          alt="Lan Kwai Fong — music video thumbnail (YouTube)">
-        <div class="promo-caption">
-          <span>Lan Kwai Fong <span class="sub">| Music Video</span></span>
-          <span class="promo-icon youtube" aria-hidden="true"></span>
-        </div>
-      </a>
-    </section>
-
-    <footer class="footer" style="margin-top:20px">© Dodo Museum</footer>
-  </div>
-
-  <script src="js/main.js" defer></script>
-</body>
-</html>
+    .landing-text p {
+      margin: 10px 0;
+      font-size: 16px;
+      color:
