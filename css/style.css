@@ -18,7 +18,7 @@
 /* BACKGROUND */
 html, body{
   margin:0; padding:0;
-  background: url('../assets/img/bg-hk.webp') no-repeat center top;
+  background: url('../assets/img/bg-blank.png') no-repeat center top;
   background-size: cover;
   image-rendering: pixelated;
   color: var(--fg);
