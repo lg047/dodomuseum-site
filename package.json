@@ -1,0 +1,24 @@
+{
+  "name": "dodomuseum-site",
+  "version": "1.0.0",
+  "description": "Local dev setup for Dodo Museum site with BrowserSync live preview.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "browser-sync start --server --files 'index.html, about.html, songs.html, css/*.css, js/*.js, assets/**/*'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lg047/dodomuseum-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lg047/dodomuseum-site/issues"
+  },
+  "homepage": "https://github.com/lg047/dodomuseum-site#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
+  }
+}

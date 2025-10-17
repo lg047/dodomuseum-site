@@ -1,7 +1,9 @@
 /* === Dodo Museum — Clean Flat v4.2 (sans-serif fonts, refined landing typography) === */
 
-/* GOOGLE FONT (Inter for general text) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+/* Performance reset — consistent box-sizing */
+* , *::before, *::after { box-sizing: border-box; }
+
+/* GOOGLE FONT is now loaded from HTML with <link> for reliable cross-environment loading */
 
 /* PALETTE */
 :root{
@@ -86,7 +88,16 @@ a:hover{ color: var(--accent-2); text-decoration: underline; }
   width:30px; height:30px; padding:0;
   background: transparent; border:0; box-shadow:none;
 }
-.header-icons .brand-icon{ width:22px; height:22px; }
+.header-icons .brand-icon{
+  width:22px; height:22px;
+  background-color: var(--fg);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
 
 /* ============== CONTENT (flat site-wide) ============== */
 .hero{ margin: 8px 0 0 0; padding: 0; background: transparent; }
@@ -187,3 +198,42 @@ a:hover{ color: var(--accent-2); text-decoration: underline; }
 .bi-instagram { -webkit-mask-image: url('../assets/icons/instagram.svg'); mask-image: url('../assets/icons/instagram.svg'); }
 .bi-tiktok    { -webkit-mask-image: url('../assets/icons/tiktok.svg');    mask-image: url('../assets/icons/tiktok.svg'); }
 .bi-bandcamp  { -webkit-mask-image: url('../assets/icons/bandcamp.svg');  mask-image: url('../assets/icons/bandcamp.svg'); }
+
+/* Songs page — vertical, centered list */
+.songs-page .grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.songs-page .song {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.songs-page .song img.art,
+.songs-page .song .art {
+  width: 140px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.songs-page .song > div {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .songs-page .grid { padding: 12px; gap: 16px }
+  .songs-page .song { flex-direction: column; align-items: center; text-align: center; }
+  .songs-page .song img.art,
+  .songs-page .song .art { width: 80%; max-width: 320px; }
+  .songs-page .song > div { width: 100%; }
+}
